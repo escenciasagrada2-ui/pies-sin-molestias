@@ -268,9 +268,9 @@ const SUPABASE_ANON_KEY = "";
 const ALLOW_SIGNUP = true;
 // Datos para los textos legales (Términos y Privacidad). Completar antes de vender.
 const LEGAL = {
-  titular: "[Nombre y apellido o razón social]",
-  doc: "[CUIT]",
-  domicilio: "[Domicilio legal]",
+  titular: "Bianca Eggs",
+  doc: "CUIT 27-43250312-2",
+  domicilio: "", // pendiente: si queda vacío, no se muestra
   email: "[Email de contacto]",
   actualizado: "21 de noviembre de 2026"
 };
@@ -709,7 +709,7 @@ function installCard(){
    ========================================================= */
 const LEGAL_TXT = {
  privacidad:{t:"Política de privacidad",s:[
-  ["Quién es responsable de tus datos",[`${LEGAL.titular} (${LEGAL.doc}), con domicilio en ${LEGAL.domicilio}, es responsable de los datos personales que se tratan en Pies sin molestias. Podés escribirnos a ${LEGAL.email}.`]],
+  ["Quién es responsable de tus datos",[`${LEGAL.titular} (${LEGAL.doc})${LEGAL.domicilio?`, con domicilio en ${LEGAL.domicilio},`:""} es responsable de los datos personales que se tratan en Pies sin molestias. Podés escribirnos a ${LEGAL.email}.`]],
   ["Qué datos guardamos",["Datos de tu cuenta: nombre y email. La contraseña la guarda cifrada nuestro proveedor y nadie puede leerla.","Tu uso del programa: días completados, ejercicios realizados, evaluaciones de hábitos, tu plan personal y la lista de calzado.","Los registros de molestia que cargues (nivel, zona y notas). Son datos de salud y la ley los considera datos sensibles. Cargarlos es opcional."]],
   ["Para qué los usamos",["Solo para mostrarte tu progreso y que lo veas desde cualquier dispositivo. No los vendemos, no los usamos para publicidad y no los compartimos con nadie, salvo los proveedores técnicos que hacen funcionar la app."]],
   ["Tu consentimiento",["Al crear tu cuenta das tu consentimiento libre, expreso e informado para que tratemos estos datos, incluidos los datos de salud que decidas registrar, según los artículos 5 y 7 de la Ley 25.326 de Protección de Datos Personales. Podés retirarlo cuando quieras pidiendo la baja de tu cuenta."]],
