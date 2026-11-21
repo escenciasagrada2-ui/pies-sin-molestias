@@ -1,6 +1,6 @@
 // Pies Sin Molestias: guarda la app y las fotos para que abra sin conexión.
 // Cambiá VERSION cada vez que publiques cambios, así los celulares bajan la versión nueva.
-const VERSION = "psm-v3";
+const VERSION = "psm-v4";
 const SHELL = [
   "./pies-sin-molestias.html",
   "./manifest.webmanifest",

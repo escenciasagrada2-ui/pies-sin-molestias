@@ -262,8 +262,9 @@ const REVISOR = "";
 const KEY = "psm_v1";
 // Cuentas de usuario (Supabase). Si quedan vacías, la app funciona sin login y guarda el progreso en el dispositivo.
 // Ver SETUP-CUENTAS.md para obtener estos dos valores.
-const SUPABASE_URL = "";
-const SUPABASE_ANON_KEY = "";
+const SUPABASE_URL = "https://hvmcaypdasdoanvhmmda.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_GUXn9gW5mLNWRnqzqmbRgQ_pHv4htR2";
+const TABLE = "psm_progress";
 // true: cualquiera puede crear su cuenta. false: solo ingresan cuentas creadas por vos (compradores).
 const ALLOW_SIGNUP = true;
 // Datos para los textos legales (Términos y Privacidad). Completar antes de vender.
@@ -606,7 +607,9 @@ let S = blank();
 const esc = s => String(s??"").replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
 /* Cuentas y sincronización */
-const CLOUD = !!(SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase);
+// Dentro de una vista previa embebida (como la de Claude) no hay conexión con Supabase: se usa el modo sin cuenta.
+const EMBEDDED = (()=>{ try{ return window.self !== window.top; }catch(e){ return true; } })();
+const CLOUD = !!(SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase && !EMBEDDED);
 const sb = CLOUD ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 let USER = null, syncT = null, syncState = "ok";
 const storeKey = () => USER ? `${KEY}:${USER.id}` : KEY;
@@ -617,13 +620,13 @@ function save(){
 }
 async function pushRemote(){
   try{
-    const { error } = await sb.from("progress").upsert({ user_id: USER.id, data: S, updated_at: new Date().toISOString() });
+    const { error } = await sb.from(TABLE).upsert({ user_id: USER.id, data: S, updated_at: new Date().toISOString() });
     syncState = error ? "error" : "ok";
   }catch(e){ syncState = "error"; }
   updSync();
 }
 async function pullRemote(){
-  const { data, error } = await sb.from("progress").select("data").eq("user_id", USER.id).maybeSingle();
+  const { data, error } = await sb.from(TABLE).select("data").eq("user_id", USER.id).maybeSingle();
   if(error) throw error;
   if(data && data.data && Object.keys(data.data).length){ S = Object.assign(blank(), data.data); }
   else { S = loadLocal() || loadLocal(KEY) || blank(); await pushRemote(); }
