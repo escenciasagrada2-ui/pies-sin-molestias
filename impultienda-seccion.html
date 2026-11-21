@@ -1,0 +1,155 @@
+<!-- Pies Sin Molestias · landing de la tienda piessinmolestias.impultienda.ar (Diseño de tienda → HTML completo).
+     Los botones van a /checkout y {{price}} lo completa Impultienda con el precio del producto principal. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+  .psm{--rosa:#F7C8D5;--fucsia:#E94D91;--fucsia-osc:#C2306F;--beige:#FFF1EA;--crema:#FFF8F5;--tinta:#242126;--gris:#6E6570;--linea:#EADFE3;
+    font-family:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;font-size:17px;line-height:1.5;color:var(--tinta);background:var(--crema);margin:0;padding:0 0 48px;overflow:hidden}
+  .psm *{box-sizing:border-box}
+  .psm img{display:block;max-width:100%}
+  .psm .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+  .psm .disp{font-family:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;letter-spacing:-.01em}
+  .psm .eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fucsia-osc)}
+
+  .psm .hero{background:linear-gradient(160deg,var(--rosa),var(--beige) 70%);padding:28px 0 32px}
+  .psm .hero .wrap{display:grid;gap:22px;align-items:center}
+  .psm .hero h1{margin:6px 0 0;font-size:clamp(40px,11vw,64px);line-height:.95;font-weight:800}
+  .psm .hero h1 span{color:var(--fucsia-osc)}
+  .psm .hero .lead{margin:14px 0 0;font-size:19px;max-width:32ch}
+  .psm .hero .foto{border-radius:26px;overflow:hidden;box-shadow:0 18px 40px -18px rgba(120,40,75,.45)}
+  .psm .hero .foto img{width:100%;aspect-ratio:16/10;object-fit:cover}
+  @media(min-width:800px){.psm .hero .wrap{grid-template-columns:1.1fr 1fr}.psm .hero{padding:48px 0}}
+
+  .psm .btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:60px;padding:16px 28px;border-radius:999px;background:var(--fucsia);color:#fff;font-weight:700;font-size:18px;letter-spacing:.04em;text-decoration:none;text-align:center;box-shadow:0 10px 22px -8px rgba(233,77,145,.6);transition:transform .12s}
+  .psm .btn:active{transform:scale(.98)}
+  .psm .precio{margin:12px 0 0;text-align:center;font-size:17px}
+  .psm .precio b{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:24px;color:var(--fucsia-osc)}
+  .psm .mini{margin:10px 0 0;font-size:14.5px;color:var(--gris);text-align:center}
+  .psm .cta{margin-top:20px;max-width:420px}
+
+  .psm h2{margin:48px 0 8px;font-size:clamp(26px,6.5vw,34px);line-height:1.1;font-weight:800;text-wrap:balance}
+  .psm .sub{margin:0 0 20px;color:var(--gris);max-width:60ch}
+
+  .psm .dolor{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+  .psm .dolor div{background:#fff;border-radius:18px;padding:14px 16px;border:1px solid var(--linea);font-weight:700;display:flex;gap:10px;align-items:flex-start}
+  .psm .dolor div:before{content:"";flex:none;width:10px;height:10px;margin-top:.5em;border-radius:50%;background:var(--fucsia)}
+
+  .psm .grid{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+  @media(min-width:800px){.psm .grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .psm .card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 6px 22px rgba(120,40,75,.10)}
+  .psm .card img{width:100%;aspect-ratio:1;object-fit:cover}
+  .psm .card .t{padding:12px 14px 16px}
+  .psm .card b{display:block;font-size:17px;line-height:1.2}
+  .psm .card span{display:block;font-size:14.5px;color:var(--gris);margin-top:4px}
+
+  .psm .semanas{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+  .psm .sem{border-radius:20px;padding:18px}
+  .psm .sem small{font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+  .psm .sem b{display:block;font-size:19px;margin-top:4px;line-height:1.2}
+  .psm .sem p{margin:6px 0 0;font-size:15px}
+  .psm .s1{background:#F7C8D5}.psm .s2{background:#FFDCC8}.psm .s3{background:#EFD3E8}.psm .s4{background:#E94D91;color:#fff}
+
+  .psm .pasos{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));counter-reset:p}
+  .psm .paso{background:#fff;border-radius:20px;padding:18px;border:1px solid var(--linea);counter-increment:p}
+  .psm .paso:before{content:counter(p);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--rosa);font-weight:800;margin-bottom:10px}
+  .psm .paso b{display:block;font-size:18px}
+  .psm .paso p{margin:4px 0 0;color:var(--gris);font-size:15.5px}
+
+  .psm .bonos{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+  .psm .bono{background:var(--tinta);color:#fff;border-radius:20px;padding:18px}
+  .psm .bono small{color:var(--rosa);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
+  .psm .bono b{display:block;font-size:19px;margin-top:4px}
+  .psm .bono p{margin:6px 0 0;opacity:.85;font-size:15px}
+
+  .psm details{background:#fff;border-radius:16px;border:1px solid var(--linea);padding:14px 16px;margin-bottom:10px}
+  .psm summary{font-weight:700;cursor:pointer;list-style:none}
+  .psm summary::-webkit-details-marker{display:none}
+  .psm summary:after{content:"+";float:right;color:var(--fucsia);font-size:22px;line-height:1}
+  .psm details[open] summary:after{content:"–"}
+  .psm details p{margin:8px 0 0;color:var(--gris)}
+
+  .psm .final{margin-top:48px;background:linear-gradient(160deg,var(--rosa),var(--beige));border-radius:28px;padding:28px 20px;text-align:center}
+  .psm .final h2{margin-top:0}
+  .psm .final .cta{margin:18px auto 0}
+  .psm .legal{margin:22px 0 0;font-size:13.5px;color:var(--gris);text-align:center}
+</style>
+
+<div class="psm">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Programa digital · 30 días</div>
+        <h1 class="disp">Pies <span>sin</span> molestias</h1>
+        <p class="lead">Cuidá tus pies, recuperá comodidad en cada paso. Un programa guiado para personas con juanetes, dedos desviados o molestias con el calzado.</p>
+        <div class="cta">
+          <a class="btn" href="/checkout">QUIERO EMPEZAR HOY</a>
+          <p class="precio">Pago único de <b>{{price}}</b></p>
+          <p class="mini">Acceso inmediato desde tu celular</p>
+        </div>
+      </div>
+      <div class="foto"><img src="https://escenciasagrada2-ui.github.io/pies-sin-molestias/img/portada.jpg" alt="Pies descalzos descansando sobre una alfombra rosa en un living luminoso" loading="lazy"></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <h2 class="disp">¿Te pasa algo de esto?</h2>
+    <div class="dolor">
+      <div>El juanete te molesta cada vez que te calzás</div>
+      <div>Tus dedos se desvían o se montan uno sobre otro</div>
+      <div>Al final del día los pies te duelen o arden</div>
+      <div>No encontrás zapatos que te queden cómodos</div>
+    </div>
+
+    <h2 class="disp">Qué vas a tener</h2>
+    <p class="sub">Todo en una app simple, con letra grande, que abrís desde el celular.</p>
+    <div class="grid">
+      <div class="card"><img src="https://escenciasagrada2-ui.github.io/pies-sin-molestias/img/ex-yoga.jpg" alt="" loading="lazy"><div class="t"><b>Programa de 30 días</b><span>Una actividad corta por día, paso a paso</span></div></div>
+      <div class="card"><img src="https://escenciasagrada2-ui.github.io/pies-sin-molestias/img/ex-toalla.jpg" alt="" loading="lazy"><div class="t"><b>15 ejercicios con fotos</b><span>Suaves, sin forzar y fáciles de seguir</span></div></div>
+      <div class="card"><img src="https://escenciasagrada2-ui.github.io/pies-sin-molestias/img/prob-juanete.jpg" alt="" loading="lazy"><div class="t"><b>Fichas por molestia</b><span>Juanetes, dedos cruzados, callos y más</span></div></div>
+      <div class="card"><img src="https://escenciasagrada2-ui.github.io/pies-sin-molestias/img/calz-ancha.jpg" alt="" loading="lazy"><div class="t"><b>Guía de calzado</b><span>Qué elegir y qué evitar al comprar</span></div></div>
+      <div class="card"><img src="https://escenciasagrada2-ui.github.io/pies-sin-molestias/img/tema-anatomia.jpg" alt="" loading="lazy"><div class="t"><b>Conocé tus pies</b><span>10 temas explicados con mapas simples</span></div></div>
+      <div class="card"><img src="https://escenciasagrada2-ui.github.io/pies-sin-molestias/img/ex-elevar.jpg" alt="" loading="lazy"><div class="t"><b>Tu progreso y tu plan</b><span>Seguimiento diario y un plan para seguir</span></div></div>
+    </div>
+
+    <h2 class="disp">Tu mes, semana por semana</h2>
+    <div class="semanas">
+      <div class="sem s1"><small>Semana 1</small><b>Conocé y cuidá tus pies</b><p>Anatomía, calzado y hábitos diarios.</p></div>
+      <div class="sem s2"><small>Semana 2</small><b>Movilidad y flexibilidad</b><p>Ejercicios suaves para dedos y tobillos.</p></div>
+      <div class="sem s3"><small>Semana 3</small><b>Hábitos y bienestar</b><p>Zapatos, plantillas, separadores y descanso.</p></div>
+      <div class="sem s4"><small>Semana 4</small><b>Continuidad y cuidado</b><p>Tu rutina y tu nuevo plan de cuidado.</p></div>
+    </div>
+
+    <h2 class="disp">Además, 3 bonos</h2>
+    <div class="bonos">
+      <div class="bono"><small>Bono 1</small><b>15 ejercicios para cuidar tus pies</b><p>Biblioteca con fotos de movilidad y fortalecimiento.</p></div>
+      <div class="bono"><small>Bono 2</small><b>Guía de calzado</b><p>Manual visual para elegir zapatos más cómodos.</p></div>
+      <div class="bono"><small>Bono 3</small><b>Calendario de 30 días</b><p>Planificador imprimible para tus hábitos.</p></div>
+    </div>
+
+    <h2 class="disp">Cómo funciona</h2>
+    <div class="pasos">
+      <div class="paso"><b>Hacés tu compra</b><p>Pago seguro desde esta tienda.</p></div>
+      <div class="paso"><b>Recibís tu acceso</b><p>Te llega el link a la app para abrirla en el celular.</p></div>
+      <div class="paso"><b>Empezás el Día 1</b><p>La instalás en tu pantalla de inicio y avanzás a tu ritmo.</p></div>
+    </div>
+
+    <h2 class="disp">Preguntas frecuentes</h2>
+    <details><summary>¿Necesito algún elemento especial?</summary><p>No. Con una toalla, una pelota blanda y unas bolitas o tapitas alcanza para todos los ejercicios.</p></details>
+    <details><summary>¿Cuánto tiempo por día?</summary><p>Entre 5 y 15 minutos. Podés hacerlo mirando la tele.</p></details>
+    <details><summary>¿Corrige el juanete?</summary><p>No. Ningún ejercicio cambia la forma del hueso. El programa te enseña a cuidar tus pies, mejorar su movilidad y elegir mejor el calzado para estar más cómoda en el día a día.</p></details>
+    <details><summary>¿Funciona en mi celular?</summary><p>Sí, en Android y en iPhone. También se puede usar en la computadora o la tablet.</p></details>
+    <details><summary>¿Y si me arrepiento?</summary><p>Tenés 10 días corridos desde la compra para arrepentirte, como indica la Ley de Defensa del Consumidor.</p></details>
+
+    <div class="final">
+      <h2 class="disp">Empezá a cuidar tus pies hoy</h2>
+      <p>30 días, una actividad por día, desde tu celular.</p>
+      <div class="cta">
+        <a class="btn" href="/checkout">QUIERO MI PROGRAMA</a>
+        <p class="precio">Pago único de <b>{{price}}</b></p>
+        <p class="mini">Acceso inmediato</p>
+      </div>
+    </div>
+
+    <p class="legal">Programa educativo y de bienestar. No reemplaza la consulta con un profesional de la salud.</p>
+  </div>
+</div>
