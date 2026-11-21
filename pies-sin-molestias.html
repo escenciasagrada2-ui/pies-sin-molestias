@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Pies Sin Molestias</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Programa de cuidado de los pies en 30 días.">
+<meta name="theme-color" content="#E94D91">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Pies Sin Molestias">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap">
+<style>
+/* Layout: app shell centrado, contenido en tarjetas, navegación inferior fija tipo app de bienestar */
+:root{
+  --pastel:#F7C8D5; --accent:#E94D91; --accent-ink:#C2306F; --cream:#FFF1EA; --white:#FFFFFF;
+  --ink:#242126; --muted:#6E6570; --mist:#F4F2F3; --line:#EADFE3;
+  --bg:#FFF8F5; --surface:#FFFFFF; --surface-2:#FFF1EA; --on-accent:#FFFFFF;
+  --w1:#F7C8D5; --w2:#FFDCC8; --w3:#EFD3E8; --w4:#E94D91; --w4-ink:#FFFFFF; --w-ink:#242126;
+  --ok:#2F8F63; --ok-bg:#E3F4EA; --warn:#B4541A; --warn-bg:#FFEBDD; --bad:#C0263A; --bad-bg:#FDE4E7;
+  --skin:#FBE3DA; --bone:#FFFFFF; --stroke:#242126; --shadow:0 6px 22px rgba(120,40,75,.10), 0 1px 3px rgba(120,40,75,.08);
+  --f-display:"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --f-body:"Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --r-lg:26px; --r-md:18px; --r-sm:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --pastel:#5A3343; --accent:#F0679F; --accent-ink:#FF8DBA; --cream:#2C2228; --white:#FFFFFF;
+  --ink:#F7EEF2; --muted:#BFAEB7; --mist:#2A2328; --line:#3D3239;
+  --bg:#1B171B; --surface:#241E23; --surface-2:#2C2228; --on-accent:#1B171B;
+  --w1:#5A3343; --w2:#5B3B2C; --w3:#4D3449; --w4:#F0679F; --w4-ink:#1B171B; --w-ink:#F7EEF2;
+  --ok:#6FD3A0; --ok-bg:#1F3A2C; --warn:#F3A46B; --warn-bg:#3E2A1C; --bad:#FF8A98; --bad-bg:#3F1F25;
+  --skin:#4A3A3A; --bone:#E9DDE2; --stroke:#F7EEF2; --shadow:0 6px 22px rgba(0,0,0,.35); color-scheme:dark }}
+:root[data-theme="dark"]{
+  --pastel:#5A3343; --accent:#F0679F; --accent-ink:#FF8DBA; --cream:#2C2228; --white:#FFFFFF;
+  --ink:#F7EEF2; --muted:#BFAEB7; --mist:#2A2328; --line:#3D3239;
+  --bg:#1B171B; --surface:#241E23; --surface-2:#2C2228; --on-accent:#1B171B;
+  --w1:#5A3343; --w2:#5B3B2C; --w3:#4D3449; --w4:#F0679F; --w4-ink:#1B171B; --w-ink:#F7EEF2;
+  --ok:#6FD3A0; --ok-bg:#1F3A2C; --warn:#F3A46B; --warn-bg:#3E2A1C; --bad:#FF8A98; --bad-bg:#3F1F25;
+  --skin:#4A3A3A; --bone:#E9DDE2; --stroke:#F7EEF2; --shadow:0 6px 22px rgba(0,0,0,.35); color-scheme:dark }
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+*{box-sizing:border-box}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+.app{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px calc(110px + env(safe-area-inset-bottom,0px))}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);display:flex;align-items:center;gap:12px;padding-block:10px;min-height:60px}
+.top .brand{font-family:var(--f-display);font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);display:flex;align-items:center;gap:8px}
+.top .ttl{font-family:var(--f-display);font-weight:700;font-size:19px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.iconbtn{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;flex:none}
+.iconbtn svg{width:22px;height:22px}
+.spacer{flex:1}
+.view{display:flex;flex-direction:column;gap:20px;animation:in .35s ease both}
+@keyframes in{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* Navegación inferior */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:8px max(10px,env(safe-area-inset-left,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-right,0px));background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.nav ul{list-style:none;margin:0 auto;padding:0;max-width:620px;display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.nav button{width:100%;min-height:58px;border:0;background:none;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11.5px;font-weight:700;letter-spacing:.03em;color:var(--muted);text-transform:uppercase}
+.nav button svg{width:24px;height:24px}
+.nav button[aria-current="page"]{color:var(--accent-ink);background:color-mix(in srgb,var(--pastel) 55%,transparent)}
+
+/* Tarjetas y elementos */
+.card{background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:20px}
+.soft{background:var(--surface-2);border-radius:var(--r-lg);padding:20px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink)}
+.muted{color:var(--muted)}
+.small{font-size:15px}
+.h2{font-size:clamp(24px,5vw,30px);font-weight:800}
+.h3{font-size:20px;font-weight:700}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))}
+.grid2{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.btn{min-height:56px;border-radius:999px;border:0;padding:14px 26px;font-weight:700;font-size:17px;letter-spacing:.04em;display:inline-flex;align-items:center;justify-content:center;gap:10px;transition:transform .15s ease, box-shadow .15s}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--accent);color:var(--on-accent);box-shadow:0 8px 20px color-mix(in srgb,var(--accent) 35%,transparent)}
+.btn.ghost{background:var(--surface);border:1.5px solid var(--line)}
+.btn.done{background:var(--ok-bg);color:var(--ok)}
+.btn.block{width:100%}
+.btn svg{width:22px;height:22px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:var(--mist);font-size:14px;font-weight:700}
+.chip.ok{background:var(--ok-bg);color:var(--ok)}
+.chip.pink{background:var(--pastel);color:var(--w-ink)}
+.tap{border:0;text-align:left;width:100%;background:var(--surface);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px;display:flex;gap:14px;align-items:center;transition:transform .15s}
+.tap:hover{transform:translateY(-2px)}
+.tap .ill{width:68px;height:68px;flex:none;border-radius:16px;background:var(--surface-2);display:grid;place-items:center;overflow:hidden}
+.tap .ill svg{width:62px;height:62px}
+.tap .ill img{width:100%;height:100%;object-fit:cover}
+img.photo{display:block;width:100%;max-width:560px;aspect-ratio:1;object-fit:cover;border-radius:var(--r-lg);background:var(--surface-2);box-shadow:var(--shadow)}
+.grid .card img.photo{max-width:none;aspect-ratio:4/3}
+.hero .art img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:22px;box-shadow:var(--shadow)}
+.tap .txt{min-width:0;flex:1}
+.tap .txt b{display:block;font-size:17px;line-height:1.25}
+.tap .txt span{display:block;font-size:14.5px;color:var(--muted);margin-top:2px}
+.tap .go{flex:none;color:var(--muted)}
+.tap .go svg{width:20px;height:20px}
+.bar{height:12px;border-radius:999px;background:var(--mist);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:inherit;transition:width .6s ease}
+ul.dots{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+ul.dots li{position:relative;padding-left:22px}
+ul.dots li::before{content:"";position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:12px}
+ol.steps li{counter-increment:s;display:flex;gap:12px;align-items:flex-start}
+ol.steps li::before{content:counter(s);flex:none;width:32px;height:32px;border-radius:50%;background:var(--pastel);color:var(--w-ink);font-weight:700;display:grid;place-items:center;font-size:15px}
+.alert{border-radius:var(--r-md);padding:16px;display:flex;gap:12px;align-items:flex-start;background:var(--warn-bg);color:var(--ink)}
+.alert svg{width:24px;height:24px;flex:none;color:var(--warn);margin-top:2px}
+.alert.red{background:var(--bad-bg)}
+.alert.red svg{color:var(--bad)}
+.sec-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+
+/* Hero */
+.hero{background:linear-gradient(160deg,var(--pastel),var(--cream) 70%);border-radius:32px;padding:24px;display:grid;gap:12px;grid-template-columns:1fr;position:relative;overflow:hidden;color:var(--w-ink)}
+.hero h1{font-size:clamp(36px,9vw,58px);font-weight:800;letter-spacing:-.02em;line-height:.95}
+.hero h1 span{color:var(--accent-ink)}
+.hero .sub{font-size:18px;max-width:30ch}
+.hero .art{justify-self:center;width:100%}
+.hero .art svg{width:100%;height:auto;display:block}
+@media (min-width:760px){.hero{grid-template-columns:1.2fr 1fr;align-items:center;padding:36px}.hero .art{grid-row:1/4;grid-column:2}}
+.feature{background:var(--ink);color:var(--bg);border-radius:var(--r-lg);padding:22px;display:flex;gap:16px;align-items:center}
+.feature .num{font-family:var(--f-display);font-weight:800;font-size:56px;line-height:.9;color:var(--accent)}
+.ring{width:84px;height:84px;flex:none}
+
+/* Semanas */
+.week{border-radius:var(--r-lg);padding:20px;color:var(--w-ink);display:flex;flex-direction:column;gap:14px}
+.week.w4{color:var(--w4-ink)}
+.week .bar{background:color-mix(in srgb,var(--surface) 55%,transparent)}
+.week.w4 .bar i{background:var(--w4-ink)}
+.days{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.day{border:0;min-height:86px;border-radius:16px;background:color-mix(in srgb,var(--surface) 82%,transparent);color:var(--ink);padding:10px 12px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;gap:6px;position:relative}
+.day small{font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.day b{font-size:14.5px;line-height:1.25}
+.day.is-done{background:var(--ok-bg)}
+.day.is-done small{color:var(--ok)}
+.day.is-next{outline:3px solid var(--accent);outline-offset:-3px}
+.day .tick{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:var(--ok);color:var(--bg);display:grid;place-items:center}
+.day .tick svg{width:14px;height:14px}
+
+/* Mapa mental */
+.mm{display:flex;flex-direction:column;gap:0}
+.mm-c{align-self:flex-start;background:var(--accent);color:var(--on-accent);font-family:var(--f-display);font-weight:800;font-size:19px;padding:12px 20px;border-radius:999px}
+.mm-bs{margin-left:22px;border-left:3px solid var(--pastel);padding:14px 0 4px 0;display:flex;flex-direction:column;gap:12px}
+.mm-b{position:relative;margin-left:22px;background:var(--surface-2);border-radius:var(--r-md);padding:12px 14px}
+.mm-b::before{content:"";position:absolute;left:-25px;top:22px;width:22px;height:3px;background:var(--pastel)}
+.mm-b b{display:block;font-family:var(--f-display);font-size:17px;margin-bottom:6px;color:var(--accent-ink)}
+.mm-b .leaves{display:flex;flex-wrap:wrap;gap:6px}
+.mm-b .leaves span{background:var(--surface);border-radius:10px;padding:4px 10px;font-size:14.5px}
+@media (min-width:760px){.mm-bs{display:grid;grid-template-columns:1fr 1fr}}
+
+/* Ilustraciones */
+.illus{background:var(--surface-2);border-radius:var(--r-lg);display:grid;place-items:center;padding:16px}
+.illus svg{width:100%;max-width:340px;height:auto;display:block}
+.sk{fill:var(--skin);stroke:var(--stroke);stroke-width:2.5;stroke-linejoin:round}
+.sk2{fill:var(--pastel);stroke:var(--stroke);stroke-width:2.5}
+.bn{fill:var(--bone);stroke:var(--stroke);stroke-width:1.6}
+.hl{fill:var(--accent);opacity:.85}
+.hlr{fill:none;stroke:var(--accent);stroke-width:3;stroke-dasharray:5 4}
+.ln{fill:none;stroke:var(--stroke);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.lnm{fill:none;stroke:var(--muted);stroke-width:1.5}
+.ar{fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.gr{stroke:var(--muted);stroke-width:2;stroke-dasharray:2 5;stroke-linecap:round}
+.tx{fill:var(--ink);font-family:var(--f-body);font-size:13px;font-weight:700}
+.txa{fill:var(--accent-ink);font-family:var(--f-display);font-size:20px;font-weight:800}
+.obj{fill:var(--pastel);stroke:var(--stroke);stroke-width:2}
+.obj2{fill:var(--cream);stroke:var(--stroke);stroke-width:2}
+.limb{fill:none;stroke:var(--stroke);stroke-width:14;stroke-linecap:round;stroke-linejoin:round}
+.limbf{fill:none;stroke:var(--skin);stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+
+/* Formularios */
+.scale{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:4px}
+.scale button{min-height:46px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);font-weight:700;font-size:15px;padding:0}
+.scale button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{min-height:44px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);padding:6px 16px;font-weight:700;font-size:15px}
+.chips button[aria-pressed="true"]{background:var(--pastel);border-color:var(--accent);color:var(--w-ink)}
+.auth{max-width:460px;margin:0 auto;width:100%}
+.auth form{display:flex;flex-direction:column;gap:14px}
+.auth label{font-weight:700;display:flex;flex-direction:column;gap:6px}
+.auth .err{background:var(--bad-bg);color:var(--ink);border-radius:14px;padding:12px}
+.auth .msg{background:var(--ok-bg);color:var(--ink);border-radius:14px;padding:12px}
+.linkbtn{border:0;background:none;color:var(--accent-ink);font-weight:700;text-decoration:underline;padding:8px;min-height:44px}
+textarea,input[type=text],input[type=email],input[type=password]{min-height:52px;width:100%;font:inherit;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:12px}
+.check{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:14px;background:var(--surface);border:1.5px solid var(--line);cursor:pointer}
+.check input{width:24px;height:24px;accent-color:var(--accent);flex:none;margin-top:1px}
+.check:has(input:checked){border-color:var(--accent);background:color-mix(in srgb,var(--pastel) 35%,var(--surface))}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.stat{background:var(--surface);border-radius:var(--r-md);box-shadow:var(--shadow);padding:16px}
+.stat b{display:block;font-family:var(--f-display);font-size:34px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;color:var(--muted)}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.cal button{aspect-ratio:1;max-width:100%;border:0;border-radius:12px;font-weight:700;font-size:15px;color:var(--w-ink);font-variant-numeric:tabular-nums;padding:0}
+.cal button.d{background:var(--ok)!important;color:var(--bg)}
+.log{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.log:last-child{border-bottom:0}
+.log .lv{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-weight:800;font-family:var(--f-display);font-size:20px;flex:none}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.compare .c{border-radius:var(--r-md);padding:14px;display:flex;flex-direction:column;gap:8px}
+.compare .c.good{background:var(--ok-bg)}
+.compare .c.bad{background:var(--bad-bg)}
+.compare .c svg{width:100%;height:auto;max-height:200px}
+.compare .lbl{font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.compare .good .lbl{color:var(--ok)}
+.compare .bad .lbl{color:var(--bad)}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.tabs button{flex:none;min-height:44px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);padding:6px 16px;font-weight:700;font-size:15px}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.myth{border-radius:var(--r-md);padding:14px;background:var(--surface);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
+.tag{align-self:flex-start;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px}
+.tag.m{background:var(--bad-bg);color:var(--bad)}
+.tag.v{background:var(--ok-bg);color:var(--ok)}
+.tag.d{background:var(--warn-bg);color:var(--warn)}
+.modal{position:fixed;inset:0;z-index:60;background:rgba(36,33,38,.55);display:grid;place-items:end center;padding:16px max(16px,env(safe-area-inset-left,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-right,0px))}
+.modal .sheet{background:var(--surface);border-radius:28px;max-width:560px;width:100%;max-height:88vh;overflow:auto;padding:24px;display:flex;flex-direction:column;gap:14px;animation:in .3s ease}
+@media (min-width:760px){.modal{place-items:center}}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:70;background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:999px;font-weight:700;box-shadow:var(--shadow);max-width:calc(100% - 32px)}
+table.print{width:100%;border-collapse:collapse;font-size:14px}
+table.print th,table.print td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+table.print th{background:var(--surface-2)}
+.tw{overflow-x:auto}
+@media print{
+  .nav,.top,.noprint,body::before{display:none!important}
+  body{background:#fff;color:#000;font-size:12px}
+  .app{padding:0}
+  .card{box-shadow:none}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#E94D91"/>
+    </marker>
+  </defs>
+</svg>
+
+<div class="app">
+  <header class="top" id="top"></header>
+  <main id="main" tabindex="-1"></main>
+</div>
+<nav class="nav" aria-label="Navegación principal"><ul id="nav"></ul></nav>
+<div id="modal"></div>
+<div id="toast" class="toast" hidden></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+/* =========================================================
+   CONFIGURACIÓN
+   ========================================================= */
+// Completar con el nombre y matrícula del profesional que revise los contenidos antes de publicar.
+const REVISOR = "";
+const KEY = "psm_v1";
+// Cuentas de usuario (Supabase). Si quedan vacías, la app funciona sin login y guarda el progreso en el dispositivo.
+// Ver SETUP-CUENTAS.md para obtener estos dos valores.
+const SUPABASE_URL = "";
+const SUPABASE_ANON_KEY = "";
+// true: cualquiera puede crear su cuenta. false: solo ingresan cuentas creadas por vos (compradores).
+const ALLOW_SIGNUP = true;
+// Datos para los textos legales (Términos y Privacidad). Completar antes de vender.
+const LEGAL = {
+  titular: "[Nombre y apellido o razón social]",
+  doc: "[CUIT]",
+  domicilio: "[Domicilio legal]",
+  email: "[Email de contacto]",
+  actualizado: "21 de noviembre de 2026"
+};
+
+/* =========================================================
+   ÍCONOS
+   ========================================================= */
+const I = {
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>',
+  cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+  foot:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22c-2.5 0-3.5-2-3.2-4.5.3-2.2-.6-4-.8-6C3.7 9 5 7.5 7.5 7.5S11.5 9 11.3 11.5c-.2 2.4-1 4-1 6.5 0 2-.5 4-2.3 4z"/><circle cx="7" cy="3.5" r="1.6"/><circle cx="10.5" cy="3.6" r="1.1"/><circle cx="13" cy="4.8" r="1"/><circle cx="14.8" cy="6.6" r=".9"/></svg>',
+  book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 21V5M8 7h7"/></svg>',
+  chart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
+  back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
+  next:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
+  alert:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg>',
+  clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  gift:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 13h18M12 9v12M12 9c-2-4-6-4-6-1.5S9 9 12 9zm0 0c2-4 6-4 6-1.5S15 9 12 9z"/></svg>',
+  shoe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17V8l5 1 3 3 8 2c1.7.4 2 1.6 2 3H3z"/><path d="M3 20h18"/></svg>',
+  steth:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a5 5 0 0010 0V3"/><path d="M11 14v2a5 5 0 0010 0v-2"/><circle cx="21" cy="12" r="2"/></svg>',
+  shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>',
+  play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+  print:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>',
+  search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>'
+};
+
+/* =========================================================
+   ILUSTRACIONES (SVG generado)
+   ========================================================= */
+const SOLE = "M100 288 C70 288 62 262 64 232 C66 200 58 172 54 148 C50 124 52 104 64 96 C80 86 128 86 146 96 C160 104 160 126 154 150 C148 178 140 205 138 235 C136 265 128 288 100 288 Z";
+const TOES = [[72,70,16,24],[98,60,10,15],[117,64,9,13],[133,74,8,11],[146,87,7,9]];
+function topFoot(o={}){
+  const t = TOES.map((e,i)=>{
+    let tr = "";
+    if(o.bunion && i===0) tr = ' transform="rotate(22 70 98)"';
+    if(o.bunion && i===1) tr = ' transform="translate(4 0) rotate(8 98 80)"';
+    if(o.spread){ const r=[-12,-4,2,7,12][i]; tr=` transform="rotate(${r} ${e[0]} ${e[1]+e[3]})"`; }
+    if(o.crossed && i===1) return "";
+    return `<ellipse class="sk" cx="${e[0]}" cy="${e[1]}" rx="${e[2]}" ry="${e[3]}"${tr}/>`;
+  }).join("");
+  let extra = "";
+  if(o.bunion) extra += `<ellipse class="sk" cx="58" cy="116" rx="13" ry="16"/><circle class="hl" cx="56" cy="116" r="8"/>`;
+  if(o.crossed) extra += `<ellipse class="sk2" cx="86" cy="62" rx="10" ry="16" transform="rotate(-24 92 80)"/>`;
+  if(o.spread) extra += `<path class="ar" d="M44 50 L30 40" marker-end="url(#ah)"/><path class="ar" d="M160 70 L176 62" marker-end="url(#ah)"/>`;
+  if(o.dots) extra += `<g class="hlr"><circle cx="100" cy="140" r="16"/><circle cx="100" cy="205" r="13"/><circle cx="100" cy="258" r="12"/></g>`;
+  if(o.press) extra += `<circle class="hl" cx="54" cy="116" r="9"/><circle class="hl" cx="152" cy="118" r="7"/>`;
+  return `<g>${t}<path class="sk" d="${SOLE}"/>${extra}</g>`;
+}
+function svgTop(o, vb="0 0 200 300"){ return `<svg viewBox="${vb}" role="img" aria-label="${o.label||'Ilustración del pie'}">${topFoot(o)}</svg>`; }
+
+function anatomy(hl){
+  const ph = [[62,40,18,22],[62,64,20,22],[93,38,11,14],[93,54,11,13],[93,69,11,14],[112,44,10,12],[112,58,10,12],[112,72,10,13],[128,54,9,11],[128,67,9,11],[128,80,9,12],[141,68,8,10],[141,80,8,10],[141,92,8,10]]
+    .map(r=>`<rect class="bn" x="${r[0]}" y="${r[1]}" width="${r[2]}" height="${r[3]}" rx="4"/>`).join("");
+  const mt = [[72,94,80,165,13],[98,88,98,168,9],[117,92,112,170,8],[132,98,124,172,8],[145,108,136,174,8]]
+    .map(m=>`<line x1="${m[0]}" y1="${m[1]}" x2="${m[2]}" y2="${m[3]}" stroke="var(--stroke)" stroke-width="${m[4]+3}" stroke-linecap="round"/><line x1="${m[0]}" y1="${m[1]}" x2="${m[2]}" y2="${m[3]}" stroke="var(--bone)" stroke-width="${m[4]}" stroke-linecap="round"/>`).join("");
+  const ta = `<rect class="bn" x="74" y="176" width="14" height="22" rx="4"/><rect class="bn" x="90" y="176" width="12" height="22" rx="4"/><rect class="bn" x="104" y="176" width="12" height="22" rx="4"/><rect class="bn" x="118" y="178" width="24" height="30" rx="6"/><rect class="bn" x="76" y="201" width="40" height="17" rx="7"/><ellipse class="bn" cx="102" cy="230" rx="28" ry="14"/><ellipse class="bn" cx="102" cy="263" rx="28" ry="22"/>`;
+  const zone = {
+    mtf:`<circle class="hlr" cx="76" cy="92" r="15"/>`,
+    ante:`<rect class="hlr" x="52" y="30" width="108" height="148" rx="20"/>`,
+    medio:`<rect class="hlr" x="68" y="172" width="80" height="52" rx="14"/>`,
+    retro:`<rect class="hlr" x="68" y="214" width="70" height="76" rx="18"/>`,
+    toes:`<rect class="hlr" x="86" y="34" width="70" height="72" rx="16"/>`
+  }[hl]||"";
+  const labels = [["Falanges",60,152],["Metatarsianos",132,140],["Huesos del mediopié",192,146],["Astrágalo",230,132],["Calcáneo",263,132]]
+    .map(l=>`<line class="lnm" x1="${l[2]}" y1="${l[1]}" x2="208" y2="${l[1]}"/><text class="tx" x="212" y="${l[1]+4}">${l[0]}</text>`).join("");
+  const mtfL = hl==="mtf" ? `<line class="lnm" x1="62" y1="92" x2="20" y2="100"/><text class="tx" x="2" y="116">Articulación</text><text class="tx" x="2" y="131">del dedo gordo</text>` : "";
+  return `<svg viewBox="0 0 340 300" role="img" aria-label="Huesos del pie vistos desde arriba"><path d="${SOLE}" fill="var(--skin)" opacity=".75"/>${TOES.map(e=>`<ellipse cx="${e[0]}" cy="${e[1]}" rx="${e[2]}" ry="${e[3]}" fill="var(--skin)" opacity=".75"/>`).join("")}${mt}${ph}${ta}${zone}${labels}${mtfL}</svg>`;
+}
+
+const SIDE = "M48 6 L82 6 L86 78 C92 92 110 98 140 102 L205 108 C222 110 232 118 228 128 C226 134 218 136 208 136 L50 136 C36 136 30 124 34 110 L44 78 Z";
+function side(extra="", tf=""){ return `<svg viewBox="0 0 260 160" role="img" aria-label="Pie de perfil"><line class="gr" x1="6" y1="138" x2="254" y2="138"/><g${tf?` transform="${tf}"`:""}><path class="sk" d="${SIDE}"/>${extra}</g></svg>`; }
+
+function toeSide(kind){
+  const P = {
+    normal:[[30,100],[78,100],[102,100],[122,100]],
+    martillo:[[30,100],[70,98],[86,74],[104,96],[118,102]],
+    garra:[[30,100],[58,80],[76,92],[86,110],[92,122]],
+    mazo:[[30,100],[74,100],[100,100],[110,116]]
+  }[kind];
+  const d = "M"+P.map(p=>p.join(" ")).join(" L");
+  const joints = P.slice(1,-1).map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="6" fill="var(--bone)" stroke="var(--stroke)" stroke-width="2"/>`).join("");
+  return `<svg viewBox="0 0 150 140" role="img" aria-label="Dedo de perfil: ${kind}"><line class="gr" x1="6" y1="126" x2="144" y2="126"/><path d="${d}" fill="none" stroke="var(--stroke)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="var(--skin)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>${joints}<text class="tx" x="75" y="22" text-anchor="middle">${{normal:"Dedo alineado",martillo:"En martillo",garra:"En garra",mazo:"En mazo"}[kind]}</text></svg>`;
+}
+
+const SHOE_WIDE = "M80 250 C48 250 36 226 38 196 C40 160 28 120 28 80 C28 36 50 12 82 12 C114 12 134 36 134 76 C134 118 122 160 120 196 C118 228 112 250 80 250 Z";
+const SHOE_POINT = "M80 250 C50 250 42 226 44 196 C46 160 42 120 54 80 C64 46 76 18 84 4 C94 22 108 52 114 86 C120 120 116 160 114 196 C112 228 108 250 80 250 Z";
+function shoeTop(kind){
+  const foot = kind==="wide" ? topFoot({}) : topFoot({bunion:true,press:true});
+  return `<svg viewBox="0 0 160 260" role="img" aria-label="${kind==='wide'?'Calzado de punta ancha':'Calzado de punta fina'}"><path d="${kind==='wide'?SHOE_WIDE:SHOE_POINT}" fill="var(--surface)" stroke="var(--stroke)" stroke-width="3"/><g transform="translate(18 34) scale(.62)" opacity=".9">${foot}</g></svg>`;
+}
+function shoeSide(kind){
+  const shapes = {
+    sneaker:`<path d="M20 120 L22 70 C40 66 60 62 76 72 C96 84 130 92 170 96 C196 99 214 106 216 120 Z" fill="var(--surface)" stroke="var(--stroke)" stroke-width="3"/><path d="M18 120 H218 V132 H18 Z" fill="var(--pastel)" stroke="var(--stroke)" stroke-width="3"/><path class="ln" d="M90 80 l10 10 M104 84 l10 10 M118 88 l10 10"/>`,
+    flat:`<path d="M24 118 C22 96 30 80 46 80 C80 90 120 92 170 96 C200 98 214 108 214 118 Z" fill="var(--surface)" stroke="var(--stroke)" stroke-width="3"/><path d="M22 118 H216 V128 H22 Z" fill="var(--pastel)" stroke="var(--stroke)" stroke-width="3"/>`,
+    heel:`<path d="M40 40 C40 30 60 30 62 44 L70 70 C100 96 150 118 200 122 C214 124 218 132 212 136 L120 136 C96 116 70 100 58 96 L52 132 L42 132 Z" fill="var(--surface)" stroke="var(--stroke)" stroke-width="3"/><circle class="hl" cx="190" cy="126" r="8"/>`,
+    sandal:`<path d="M24 124 C20 110 28 100 44 100 L200 104 C214 106 218 116 214 124 Z" fill="var(--pastel)" stroke="var(--stroke)" stroke-width="3"/><path class="ln" d="M60 100 C60 70 90 66 96 100 M120 102 C126 80 150 80 156 104 M40 100 C34 80 46 70 58 78"/>`
+  };
+  return `<svg viewBox="0 0 236 150" role="img" aria-label="Calzado de perfil">${shapes[kind]}</svg>`;
+}
+
+function exIll(type){
+  switch(type){
+    case "spread": return svgTop({spread:true,label:"Dedos separándose"});
+    case "toeyoga": return side(`<path class="sk" d="M200 110 C206 92 222 86 230 96 C232 104 226 112 216 114 Z"/><path class="ar" d="M236 100 L240 70" marker-end="url(#ah)"/>`);
+    case "flexext": return side(`<path class="ar" d="M238 96 C250 112 248 130 232 142" marker-end="url(#ah)"/><path class="ar" d="M232 96 C238 82 232 72 220 68" marker-end="url(#ah)"/>`);
+    case "towel": return side(`<path d="M130 136 L254 136 L254 146 L130 146 Z" fill="var(--pastel)" stroke="var(--stroke)" stroke-width="2"/><path class="ln" d="M150 146 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0"/><path class="ar" d="M240 124 L196 124" marker-end="url(#ah)"/>`);
+    case "marbles": return `<svg viewBox="0 0 300 300" role="img" aria-label="Recoger bolitas con los dedos">${topFoot({})}<circle class="obj" cx="190" cy="60" r="10"/><circle class="obj" cx="212" cy="96" r="10"/><circle class="obj" cx="186" cy="128" r="10"/><path d="M220 210 h70 l-10 50 h-50 z" class="obj2"/><path class="ar" d="M200 150 C230 170 248 186 252 200" marker-end="url(#ah)"/></svg>`;
+    case "shortfoot": return side(`<path class="ar" d="M140 160 L140 124" marker-end="url(#ah)" transform="translate(0 -8)"/>`);
+    case "ankle": return side(`<ellipse cx="70" cy="80" rx="34" ry="22" class="hlr"/><path class="ar" d="M104 80 C104 96 88 104 74 104" marker-end="url(#ah)"/>`);
+    case "alphabet": return side(`<text class="txa" x="232" y="54">A</text><text class="txa" x="206" y="40">B</text><text class="txa" x="180" y="54">C</text><path class="hlr" d="M236 100 C246 80 228 66 214 62"/>`);
+    case "calf": return `<svg viewBox="0 0 260 220" role="img" aria-label="Estiramiento de pantorrilla contra la pared"><rect x="222" y="10" width="14" height="200" fill="var(--pastel)" stroke="var(--stroke)" stroke-width="2"/><line class="gr" x1="6" y1="206" x2="222" y2="206"/><circle cx="168" cy="36" r="16" class="sk"/><path class="limb" d="M160 56 L136 120"/><path class="limbf" d="M160 56 L136 120"/><path class="limb" d="M156 70 L218 70"/><path class="limbf" d="M156 70 L218 70"/><path class="limb" d="M136 120 L170 150 L172 200"/><path class="limbf" d="M136 120 L170 150 L172 200"/><path class="limb" d="M136 120 L70 200"/><path class="limbf" d="M136 120 L70 200"/><path class="sk" d="M60 196 L92 196 Q100 204 92 206 L58 206 Z"/><path class="sk" d="M166 196 L198 196 Q206 204 198 206 L164 206 Z"/><path class="ar" d="M96 168 C86 176 80 184 78 190" marker-end="url(#ah)"/></svg>`;
+    case "plantar": return side(`<path class="ar" d="M232 92 C226 60 196 40 160 40" marker-end="url(#ah)"/>`, "rotate(-6 60 136)");
+    case "ball": return `<svg viewBox="0 0 260 170" role="img" aria-label="Rodar una pelota bajo el pie"><line class="gr" x1="6" y1="160" x2="254" y2="160"/><circle class="obj" cx="140" cy="144" r="15"/><g transform="translate(0 -6)"><path class="sk" d="${SIDE}"/></g><path class="ar" d="M100 154 L64 154" marker-end="url(#ah)"/><path class="ar" d="M180 154 L216 154" marker-end="url(#ah)"/></svg>`;
+    case "heelraise": return side(`<path class="ar" d="M40 70 L40 30" marker-end="url(#ah)"/>`, "rotate(-14 212 136)");
+    case "towelcalf": return side(`<path d="M196 112 C220 70 160 20 120 6" fill="none" stroke="var(--accent)" stroke-width="6" stroke-linecap="round"/><path class="ar" d="M130 20 L104 8" marker-end="url(#ah)"/>`);
+    case "massage": return svgTop({dots:true,label:"Masaje suave de la planta"});
+    case "elevate": return `<svg viewBox="0 0 260 170" role="img" aria-label="Pies elevados sobre un almohadón"><rect x="120" y="96" width="130" height="50" rx="22" class="obj"/><line class="gr" x1="6" y1="150" x2="254" y2="150"/><path class="limb" d="M10 140 L150 96"/><path class="limbf" d="M10 140 L150 96"/><g transform="translate(118 -14) rotate(-70 70 80) scale(.7)"><path class="sk" d="${SIDE}"/></g><path class="hlr" d="M200 40 q8 -8 16 0 q8 8 16 0"/><path class="hlr" d="M196 60 q8 -8 16 0 q8 8 16 0"/></svg>`;
+    default: return svgTop({});
+  }
+}
+function condIll(id){
+  return {
+    juanete: svgTop({bunion:true,label:"Pie con juanete"}),
+    cruzados: svgTop({crossed:true,bunion:true,label:"Segundo dedo montado"}),
+    dolor: side(`<circle class="hl" cx="150" cy="128" r="10"/><circle class="hl" cx="56" cy="128" r="9"/>`),
+    inflamacion: svgTop({bunion:true,label:"Inflamación sobre el juanete"}).replace('r="8"','r="13"'),
+    callos: svgTop({press:true,label:"Zonas de presión"}),
+    calzado: shoeTop("point"),
+    martillo: toeSide("martillo")
+  }[id];
+}
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+const DISCLAIMER = "Este programa tiene fines educativos y de bienestar. No reemplaza una consulta médica, un diagnóstico ni un tratamiento profesional. Los ejercicios no corrigen la deformidad ósea ni garantizan la eliminación del dolor. Suspendé cualquier actividad que provoque molestias.";
+const REDFLAGS = ["Dolor intenso o que aparece de golpe","Enrojecimiento importante o calor en la zona","Heridas, ampollas que no cicatrizan o supuración","Hinchazón repentina","Dificultad para caminar o apoyar el pie","Hormigueo, entumecimiento o cambios de color en los dedos"];
+const RISK_NOTE = "Si tenés diabetes, problemas de circulación o de sensibilidad en los pies, consultá a un profesional antes de empezar y no te trates callos ni heridas por tu cuenta.";
+
+const CONDS = [
+ {id:"juanete",t:"Juanetes",s:"Bulto en la base del dedo gordo",
+  que:"Es un bulto óseo en el borde interno del pie, en la articulación que une el dedo gordo con el resto del pie. El dedo gordo se inclina hacia los otros dedos. Su nombre médico es hallux valgus.",
+  car:["Bulto visible en el costado del pie, a la altura del dedo gordo","El dedo gordo apunta hacia el segundo dedo","La piel sobre el bulto puede estar más roja o engrosada","Suele avanzar de forma lenta, a lo largo de años"],
+  mol:["Dolor o ardor al usar calzado cerrado o angosto","Roce e inflamación sobre el bulto","Callos entre el dedo gordo y el segundo dedo","Dificultad para encontrar zapatos cómodos"],
+  cui:["Calzado con puntera ancha y taco bajo","Protectores blandos para disminuir el roce","Frío local envuelto en una tela, hasta 15 o 20 minutos, si hay inflamación","Mantener la movilidad de los dedos sin forzar","Plantillas, solo si las indica un profesional"],
+  pro:["El dolor no mejora y limita tus actividades","El bulto cambia rápido de tamaño o forma","Hay enrojecimiento, calor o hinchazón marcada","Tenés diabetes o problemas de circulación"]},
+ {id:"cruzados",t:"Dedos cruzados o desviados",s:"Un dedo se monta sobre otro",
+  que:"Un dedo se monta encima o se mete debajo del dedo vecino. Lo más frecuente es que el segundo dedo cruce por encima del dedo gordo, muchas veces junto con un juanete.",
+  car:["El segundo dedo queda elevado y desviado","Puede haber dolor en la planta, debajo de la base del segundo dedo","Callos en la parte de arriba del dedo montado"],
+  mol:["Roce constante con el calzado","Dolor en la base del dedo al caminar","Sensación de inestabilidad en la parte delantera del pie"],
+  cui:["Calzado con puntera alta y ancha","Protectores o separadores blandos, solo si no generan dolor","Revisar a diario la piel de arriba de los dedos"],
+  pro:["Dolor en la planta debajo del segundo dedo","El dedo se desvía cada vez más","Aparecen heridas por roce"]},
+ {id:"dolor",t:"Dolor al caminar",s:"Una señal con muchas causas posibles",
+  que:"El dolor al caminar no es un diagnóstico, es una señal. Puede venir de los dedos, la planta, el talón o el tobillo, y tener causas muy distintas.",
+  car:["Puede aparecer al dar los primeros pasos o después de caminar mucho","Cambia según el calzado y la superficie","Puede estar en una zona concreta o ser difuso"],
+  mol:["Cansancio y ardor en la planta","Dolor en la parte delantera del pie","Cambios en la forma de caminar para evitar la molestia"],
+  cui:["Calzado con buena amortiguación y sujeción","Pausas durante el día y alternar actividades","Anotar qué empeora o mejora el dolor para contárselo al profesional"],
+  pro:["El dolor no mejora después de dos semanas de cuidados en casa","No podés apoyar el pie o caminar con normalidad","El dolor apareció tras un golpe o torcedura","Hay hormigueo o entumecimiento"]},
+ {id:"inflamacion",t:"Inflamación y sensibilidad",s:"Hinchazón, calor o zona sensible",
+  que:"Es la reacción de los tejidos ante el roce, la presión o una sobrecarga. En los juanetes es común que se inflame la bolsa que protege la articulación (bursitis).",
+  car:["Zona hinchada, más caliente o rojiza","Sensibilidad al tocar o al calzarse","Suele empeorar al final del día"],
+  mol:["Dolor al presionar la zona","Dificultad para usar calzado cerrado","Rigidez después del reposo"],
+  cui:["Reposo relativo y pies en alto","Frío local envuelto en una tela, nunca directo sobre la piel","Evitar el calzado que aprieta la zona"],
+  pro:["Hinchazón repentina o en un solo pie con dolor en la pantorrilla: consultá con urgencia","Enrojecimiento intenso con calor o fiebre","Dolor muy fuerte en una articulación sin causa aparente"]},
+ {id:"callos",t:"Callos y durezas",s:"Piel engrosada por presión",
+  que:"La piel se engrosa para protegerse de un roce o presión repetidos. Los callos suelen tener un centro duro y aparecer en los dedos; las durezas son zonas más amplias en la planta.",
+  car:["Piel gruesa, amarillenta o seca","Aparecen donde el calzado roza o donde el pie apoya más","Pueden doler al presionar"],
+  mol:["Dolor punzante al caminar","Ardor en la planta","Grietas en la piel si están muy secas"],
+  cui:["Corregir la causa: el calzado y la presión","Hidratar la piel a diario, sin poner crema entre los dedos","Limar con suavidad después del baño","No cortar con cuchillas ni usar callicidas sin consultar"],
+  pro:["El callo duele, sangra o supura","Tenés diabetes o mala circulación: siempre con podólogo","Vuelve a aparecer enseguida"]},
+ {id:"calzado",t:"Molestias por el calzado",s:"Roces, ampollas y presión",
+  que:"Muchas molestias aparecen o empeoran por un calzado que no respeta la forma del pie: punta angosta, taco alto, materiales rígidos o un talle que no corresponde.",
+  car:["Marcas rojas al sacarte los zapatos","Ampollas o roces en los mismos lugares","Alivio inmediato al descalzarte"],
+  mol:["Dolor sobre el juanete o encima de los dedos","Uñas que se lastiman o se encarnan","Cansancio y ardor en la planta"],
+  cui:["Probar el calzado a la tarde, cuando el pie está más hinchado","Dejar cerca de 1 cm delante del dedo más largo","Elegir puntera ancha, taco bajo y materiales blandos","Usar medias sin costuras gruesas"],
+  pro:["Ampollas o heridas que no cicatrizan","Uña encarnada con pus o enrojecimiento","Molestias que siguen igual aun con calzado adecuado"]},
+ {id:"martillo",t:"Dedos en martillo o en garra",s:"Dedos que se doblan hacia abajo",
+  que:"En el dedo en martillo se dobla la articulación del medio. En el dedo en garra se doblan las articulaciones del medio y de la punta, y la base del dedo se levanta. Al principio suelen ser flexibles y con el tiempo pueden volverse rígidos.",
+  car:["El dedo se ve doblado en forma de puente","Callos encima de la articulación doblada o en la punta del dedo","Puede afectar uno o varios dedos"],
+  mol:["Roce con la parte de arriba del calzado","Dolor en la planta, debajo de la base de los dedos","Dificultad para estirar el dedo"],
+  cui:["Calzado con puntera alta, que no apriete los dedos desde arriba","Protectores de gel para disminuir el roce","Ejercicios suaves de dedos, solo si el dedo es flexible y no duele"],
+  pro:["El dedo se volvió rígido","Aparecen heridas sobre el dedo","Varios dedos en garra a la vez (puede relacionarse con otros problemas que debe evaluar un médico)","Tenés diabetes"]}
+];
+
+const TOPICS = [
+ {id:"anatomia",t:"Anatomía básica del pie",ill:()=>anatomy("ante"),
+  intro:"Cada pie tiene 26 huesos, 33 articulaciones y más de un centenar de músculos, tendones y ligamentos. Trabajan juntos para sostenerte, amortiguar cada paso e impulsarte.",
+  map:{c:"El pie",b:[["Antepié",["5 metatarsianos","14 falanges","Dedos"]],["Mediopié",["Navicular","Cuboides","3 cuñas"]],["Retropié",["Astrágalo","Calcáneo (talón)"]],["Arcos",["Interno","Externo","Transversal"]],["Funciones",["Sostener","Amortiguar","Impulsar"]]]},
+  con:["El dedo gordo soporta gran parte del impulso al caminar","Los arcos funcionan como resortes que absorben el impacto","Los músculos pequeños del pie ayudan a mantener los dedos estables"],
+  tip:["Caminá descalzo un rato al día en casa, sobre una superficie segura","Revisá tus pies con buena luz una vez por día"]},
+ {id:"juanetes",t:"Qué son los juanetes",ill:()=>anatomy("mtf"),
+  intro:"El juanete, o hallux valgus, es una deformidad de la articulación de la base del dedo gordo. El primer metatarsiano se desvía hacia afuera del pie y el dedo gordo se inclina hacia los otros dedos.",
+  map:{c:"Juanete",b:[["Dónde",["Base del dedo gordo","Borde interno del pie"]],["Qué cambia",["Metatarsiano desviado","Dedo gordo inclinado","Bulto óseo"]],["Variante",["Juanete de sastre: en el quinto dedo"]],["Qué no es",["Un crecimiento de hueso nuevo","Un problema solo estético"]]]},
+  con:["El bulto es principalmente la cabeza del metatarsiano que sobresale","Puede afectar uno o ambos pies","No todos los juanetes duelen"],
+  tip:["Elegí calzado que no apriete el bulto","Observá si aparecen cambios en la forma o el dolor"]},
+ {id:"forma",t:"Cómo se forman",ill:()=>svgTop({bunion:true}),
+  intro:"Se forman de manera progresiva. Por la forma del pie y las fuerzas al caminar, el dedo gordo empuja poco a poco hacia los demás y la articulación se va desalineando.",
+  map:{c:"Formación",b:[["1. Inicio",["Leve inclinación del dedo gordo"]],["2. Avance",["El metatarsiano se separa","Aparece el bulto"]],["3. Adaptación",["Los tejidos se acomodan a la nueva posición"]],["4. Consecuencias",["Roce","Bursitis","Dedos vecinos desplazados"]]]},
+  con:["Suele llevar años","El calzado angosto puede acelerar las molestias","Una vez formado, el hueso no vuelve a su lugar con ejercicios"],
+  tip:["Cuidar el calzado desde temprano ayuda a reducir el roce y el dolor"]},
+ {id:"causas",t:"Causas y factores de riesgo",ill:()=>svgTop({bunion:true}),
+  intro:"No hay una única causa. Se combinan la forma del pie que heredamos con otros factores que aumentan la presión sobre el dedo gordo.",
+  map:{c:"Factores",b:[["Herencia",["Forma del pie","Antecedentes familiares"]],["Calzado",["Punta angosta","Taco alto"]],["Pie y articulaciones",["Pie plano","Ligamentos laxos","Artritis"]],["Otros",["Más frecuente en mujeres","Aumenta con la edad","Muchas horas de pie"]]]},
+  con:["La herencia es uno de los factores más importantes","El calzado no siempre es la causa, pero puede empeorar los síntomas"],
+  tip:["Si en tu familia hay juanetes, prestá atención temprana al calzado"]},
+ {id:"sintomas",t:"Síntomas",ill:()=>condIll("inflamacion"),
+  intro:"Los síntomas varían mucho entre personas. Hay juanetes grandes que casi no duelen y otros pequeños que molestan bastante.",
+  map:{c:"Síntomas",b:[["En la piel",["Enrojecimiento","Callos","Roces"]],["En la articulación",["Dolor","Hinchazón","Rigidez del dedo gordo"]],["En el pie",["Dolor en la planta","Dedos vecinos desviados"]],["En la vida diaria",["Calzado difícil","Cansancio al caminar"]]]},
+  con:["El dolor suele empeorar con calzado cerrado","La planta puede doler porque cambia el reparto del peso"],
+  tip:["Llevá un registro de molestias en Mi progreso para mostrarlo en la consulta"]},
+ {id:"grados",t:"Grados de deformidad",ill:()=>svgTop({bunion:true}),
+  intro:"Los profesionales clasifican el juanete en leve, moderado o severo midiendo ángulos en una radiografía tomada de pie. Una foto o la vista no alcanzan para saber el grado.",
+  map:{c:"Grados",b:[["Leve",["Desviación pequeña","A menudo con pocas molestias"]],["Moderado",["Desviación evidente","Más roce y dolor"]],["Severo",["Desviación marcada","Dedos vecinos afectados"]],["Cómo se mide",["Radiografía de pie apoyado","Evaluación profesional"]]]},
+  con:["El grado no siempre coincide con el dolor","La decisión de tratamiento depende de los síntomas y de cómo afectan tu vida"],
+  tip:["Si querés saber tu grado, pedí una evaluación con traumatólogo"]},
+ {id:"cruzados",t:"Dedos cruzados",ill:()=>svgTop({crossed:true,bunion:true}),
+  intro:"Un dedo se monta sobre otro. El caso más común es el segundo dedo cruzando sobre el dedo gordo, muchas veces asociado al juanete o a una lesión de los ligamentos de la base del dedo.",
+  map:{c:"Dedos cruzados",b:[["Cómo se ve",["2º dedo encima del 1º","Dedo elevado"]],["Por qué",["Juanete","Ligamentos debilitados","Calzado"]],["Molestias",["Callos arriba","Dolor en la planta"]]]},
+  con:["Si aparece dolor bajo la base del segundo dedo, conviene consultar"],
+  tip:["Elegí calzado con puntera alta","Probá protectores blandos si no duelen"]},
+ {id:"martillo",t:"Dedos en martillo",ill:()=>toeSide("martillo"),
+  intro:"El dedo se dobla en la articulación del medio y forma un puente. Puede comenzar flexible y volverse rígido con el tiempo.",
+  map:{c:"Dedo en martillo",b:[["Dónde",["Articulación media del dedo"]],["Causas",["Calzado corto o angosto","Desequilibrio muscular","Juanete"]],["Molestias",["Callo en la parte de arriba","Roce con el zapato"]],["Tipos",["Flexible","Rígido"]]]},
+  con:["Si el dedo es flexible, los ejercicios suaves pueden ayudar a la movilidad","Si está rígido, el calzado y los protectores son clave"],
+  tip:["Dejá espacio suficiente delante del dedo más largo"]},
+ {id:"garra",t:"Dedos en garra",ill:()=>toeSide("garra"),
+  intro:"La base del dedo se levanta y las articulaciones del medio y de la punta se doblan hacia abajo. Suele afectar varios dedos a la vez.",
+  map:{c:"Dedo en garra",b:[["Forma",["Base elevada","Medio y punta doblados"]],["Molestias",["Callos en la punta","Dolor en la planta"]],["Atención",["Varios dedos a la vez","Puede relacionarse con nervios o enfermedades"]]]},
+  con:["Comparado con el martillo, compromete más articulaciones","Conviene que lo evalúe un profesional"],
+  tip:["Elegí calzado con puntera alta y plantilla blanda"]},
+ {id:"mitos",t:"Mitos y verdades",ill:()=>svgTop({spread:true}),
+  intro:"Hay mucha información confusa sobre los juanetes. Estos son algunos puntos aclarados.",
+  map:{c:"Mitos y verdades",b:[["Ejercicios",["Ayudan a la movilidad","No realinean el hueso"]],["Correctores",["Alivian mientras se usan","No corrigen de forma permanente"]],["Cirugía",["Por dolor y función","No por estética"]]]},
+  myths:[["m","Los ejercicios corrigen el juanete.","Pueden mejorar la movilidad y la comodidad, pero no devuelven el hueso a su lugar."],
+         ["m","Los correctores nocturnos enderezan el dedo para siempre.","Pueden aliviar mientras se usan. No hay evidencia de que corrijan la deformidad de forma permanente."],
+         ["d","El juanete es culpa solo de los tacos.","La herencia y la forma del pie pesan mucho. El calzado angosto puede empeorar las molestias."],
+         ["m","La cirugía es una solución estética.","Se indica por dolor y limitación en la vida diaria. No se recomienda solo por la apariencia."],
+         ["v","Un calzado adecuado puede reducir las molestias.","Una puntera ancha y un taco bajo disminuyen el roce y la presión."],
+         ["v","Los hombres y los adolescentes también pueden tener juanetes.","Es más frecuente en mujeres, pero puede aparecer en cualquier persona."]],
+  con:["Desconfiá de productos que prometen eliminar el juanete sin cirugía"],
+  tip:["Combiná buen calzado, ejercicios suaves y descanso"]}
+];
+
+const EX = [
+ {id:"separar",n:"Abrir los dedos",cat:"dedos",ill:"spread",obj:"Mejorar el control y la movilidad de los dedos.",pasos:["Sentate con los pies apoyados en el piso.","Separá los dedos lo más que puedas sin forzar, como un abanico.","Mantené 5 segundos y relajá."],tiempo:"10 repeticiones · 2 min",prec:["Si un dedo no se mueve, no lo ayudes con la mano a la fuerza."]},
+ {id:"yoga",n:"Dedo gordo arriba, resto abajo",cat:"dedos",ill:"toeyoga",obj:"Trabajar el control independiente del dedo gordo.",pasos:["Sentate con los pies apoyados.","Levantá solo el dedo gordo, dejando los demás en el piso.","Bajalo y luego intentá levantar los otros cuatro dedos.","Alterná con calma."],tiempo:"8 repeticiones por lado · 3 min",prec:["Al principio cuesta: es normal. No uses la mano para forzar."]},
+ {id:"flexext",n:"Flexión y extensión de dedos",cat:"dedos",ill:"flexext",obj:"Mantener la movilidad de las articulaciones de los dedos.",pasos:["Sentate con el talón apoyado.","Doblá los dedos hacia abajo suavemente.","Después llevalos hacia arriba.","Hacelo despacio y sin rebotes."],tiempo:"10 repeticiones · 2 min",prec:["No fuerces la articulación del juanete si duele."]},
+ {id:"toalla",n:"Arrugar la toalla",cat:"toalla",ill:"towel",obj:"Fortalecer los músculos que flexionan los dedos.",pasos:["Poné una toalla fina en el piso, debajo del pie.","Con los dedos, arrugala y traela hacia vos.","Estirala de nuevo y repetí."],tiempo:"5 repeticiones · 3 min",prec:["Si aparece calambre, pará y estirá suavemente los dedos."]},
+ {id:"bolitas",n:"Recoger bolitas",cat:"toalla",ill:"marbles",obj:"Mejorar la destreza y la fuerza de los dedos.",pasos:["Dejá 10 bolitas o tapitas en el piso y un recipiente al lado.","Tomá cada una con los dedos del pie.","Dejala en el recipiente."],tiempo:"10 objetos por pie · 4 min",prec:["Usá objetos sin bordes filosos.","Hacelo sentado para no perder el equilibrio."]},
+ {id:"piecorto",n:"Pie corto",cat:"fuerza",ill:"shortfoot",obj:"Activar los músculos que sostienen el arco.",pasos:["Sentate con el pie apoyado.","Sin doblar los dedos, intentá acercar la base del dedo gordo al talón, elevando un poco el arco.","Mantené 5 segundos y relajá."],tiempo:"8 repeticiones · 2 min",prec:["El movimiento es pequeño. Los dedos quedan relajados."]},
+ {id:"talones",n:"Elevación de talones",cat:"fuerza",ill:"heelraise",obj:"Fortalecer pantorrillas y pie.",pasos:["Parate frente a una mesada o pared para sostenerte.","Subí despacio sobre la punta de los pies.","Bajá en 3 segundos."],tiempo:"10 repeticiones · 2 min",prec:["Si te molesta el dedo gordo, subí menos o salteá este ejercicio.","Siempre con apoyo para el equilibrio."]},
+ {id:"tobillo",n:"Círculos de tobillo",cat:"tobillo",ill:"ankle",obj:"Mantener la movilidad del tobillo.",pasos:["Sentate y levantá un pie del piso.","Dibujá círculos lentos con el pie.","Hacelos hacia un lado y luego hacia el otro."],tiempo:"10 círculos por lado · 2 min",prec:["Movimientos lentos y sin dolor."]},
+ {id:"alfabeto",n:"Alfabeto con el pie",cat:"tobillo",ill:"alphabet",obj:"Mover el tobillo en todas las direcciones.",pasos:["Sentate con un pie en el aire.","Escribí las letras de la A a la J con la punta del pie.","Cambiá de pie."],tiempo:"1 vuelta por pie · 3 min",prec:["Si se cansa la pierna, apoyala y descansá."]},
+ {id:"pantorrilla",n:"Estiramiento de pantorrilla en la pared",cat:"flex",ill:"calf",obj:"Estirar los músculos de la pantorrilla, que influyen en la carga del pie.",pasos:["Apoyá las manos en una pared.","Llevá una pierna atrás con el talón en el piso y la rodilla estirada.","Flexioná la rodilla de adelante hasta sentir un estiramiento suave.","Mantené 20 a 30 segundos."],tiempo:"2 veces por pierna · 3 min",prec:["Sentí estiramiento, nunca dolor.","No rebotes."]},
+ {id:"plantar",n:"Estiramiento de la planta",cat:"flex",ill:"plantar",obj:"Estirar suavemente la planta del pie.",pasos:["Sentate y cruzá un pie sobre la rodilla contraria.","Con la mano, llevá los dedos hacia arriba con suavidad.","Mantené 20 segundos."],tiempo:"3 veces por pie · 2 min",prec:["Tomá todos los dedos juntos, no solo el dedo gordo, si el juanete duele."]},
+ {id:"toallagemelo",n:"Estiramiento con toalla",cat:"toalla",ill:"towelcalf",obj:"Estirar pantorrilla y planta desde la posición sentada.",pasos:["Sentate en el piso o en la cama con las piernas estiradas.","Pasá una toalla por la planta, a la altura de la base de los dedos.","Tirá suavemente hacia vos.","Mantené 20 a 30 segundos."],tiempo:"2 veces por pierna · 3 min",prec:["Tirá con suavidad, sin tensión en la espalda."]},
+ {id:"pelota",n:"Rodar una pelota bajo el pie",cat:"relax",ill:"ball",obj:"Relajar la planta y aliviar la sensación de cansancio.",pasos:["Sentate con una pelota blanda o de tenis bajo el pie.","Rodala del talón a la base de los dedos.","Ajustá la presión para que sea agradable."],tiempo:"1 a 2 min por pie",prec:["No pases la pelota sobre el juanete si está inflamado."]},
+ {id:"masaje",n:"Masaje suave de la planta",cat:"relax",ill:"massage",obj:"Relajar y revisar la piel del pie.",pasos:["Con crema hidratante, masajeá la planta con movimientos circulares.","Recorré el arco y el talón.","Aprovechá para revisar callos, roces o heridas."],tiempo:"3 min por pie",prec:["No pongas crema entre los dedos.","No masajees heridas ni zonas muy inflamadas."]},
+ {id:"elevar",n:"Pies en alto",cat:"relax",ill:"elevate",obj:"Descansar y ayudar a disminuir la sensación de pesadez.",pasos:["Acostate o sentate cómodo.","Apoyá los pies sobre un almohadón, por encima del nivel de la cadera si es posible.","Respirá con calma."],tiempo:"10 a 15 min",prec:["Si tenés problemas circulatorios, consultá antes cuál es la posición indicada."]}
+];
+/* Fotos (carpeta img/) */
+const pic = (f,alt="",cls="") => `<img src="img/${f}.jpg" alt="${alt}" loading="lazy" decoding="async"${cls?` class="${cls}"`:""}>`;
+const TEMA_PH = new Set(["anatomia","forma","causas","grados","mitos"]);
+const TEMA_ALIAS = {juanetes:"prob-juanete",sintomas:"prob-inflamacion",cruzados:"prob-cruzados",martillo:"prob-martillo"};
+const temaPic = (t,cls="") => TEMA_PH.has(t.id) ? pic("tema-"+t.id,t.t,cls) : TEMA_ALIAS[t.id] ? pic(TEMA_ALIAS[t.id],t.t,cls) : "";
+const TEMA_DIAG = new Set(["anatomia","juanetes","cruzados","martillo","garra"]);
+const CATS = {dedos:"Movilidad de los dedos",flex:"Flexibilidad",fuerza:"Fortalecimiento",tobillo:"Movilidad del tobillo",toalla:"Ejercicios con toalla",relax:"Relajación y descanso"};
+const exById = id => EX.find(e=>e.id===id);
+
+const HABITS = ["Uso calzado con espacio para los dedos la mayor parte del día","Reviso mis pies una vez por día","Seco bien entre los dedos después del baño","Hidrato la piel de los pies (sin crema entre los dedos)","Corto las uñas rectas","Hago pausas si paso muchas horas de pie","Hice los ejercicios sin forzar y sin dolor","Descanso con los pies en alto cuando están cansados"];
+
+const WEEKS = [
+ {n:1,t:"Conocé y cuidá tus pies",c:"w1"},{n:2,t:"Movilidad y flexibilidad",c:"w2"},{n:3,t:"Hábitos y bienestar",c:"w3"},{n:4,t:"Continuidad y cuidado",c:"w4"}
+];
+const DAYS = [
+ {t:"Conocé la anatomía de tus pies",w:1,intro:"Hoy empezás por lo básico: cómo está formado tu pie y para qué sirve cada parte.",p:["Tu pie tiene tres zonas: antepié, mediopié y retropié","El dedo gordo es clave para impulsarte al caminar","Los arcos amortiguan cada paso"],ex:[],tarea:"Mirá tus pies descalzos con buena luz. Observá la forma de los dedos, zonas rojas o callos.",link:["topic","anatomia","Ver anatomía del pie"]},
+ {t:"Identificá las molestias",w:1,intro:"Reconocer dónde y cuándo aparecen las molestias te ayuda a cuidarte y a explicarlo en una consulta.",p:["¿Dónde duele? Dedos, planta, talón o tobillo","¿Cuándo? Al caminar, con cierto calzado, al final del día","¿Qué la mejora o empeora?"],ex:[],tarea:"Registrá tu primera molestia percibida en Mi progreso.",link:["problems",null,"¿Qué problema tenés?"],log:true},
+ {t:"Comprendé qué son los juanetes",w:1,intro:"Entender el juanete te ayuda a tener expectativas realistas y elegir mejor tus cuidados.",p:["Es una desviación de la articulación del dedo gordo","Suele avanzar lentamente","Los cuidados buscan comodidad, no corregir el hueso"],ex:[],tarea:"Leé la ficha «Qué son los juanetes» y anotá tus dudas para un profesional.",link:["topic","juanetes","Qué son los juanetes"]},
+ {t:"Aprendé a elegir calzado",w:1,intro:"El calzado es una de las herramientas más útiles para reducir el roce y la presión.",p:["Puntera ancha y alta","Taco bajo y ancho","Materiales blandos sobre el juanete"],ex:[],tarea:"Revisá tus zapatos más usados con la guía de calzado.",link:["shoes",null,"Abrir la guía de calzado"]},
+ {t:"Hábitos para cuidar tus pies",w:1,intro:"Pequeños hábitos diarios hacen una gran diferencia en el bienestar de tus pies.",p:["Revisá tus pies todos los días","Lavá y secá bien entre los dedos","Hidratá la planta y el talón","Cortá las uñas rectas"],ex:["masaje"],tarea:"Elegí dos hábitos para sumar desde hoy."},
+ {t:"Descanso y cuidado diario",w:1,intro:"El descanso también es parte del cuidado. Hoy aprendés a aliviar el cansancio del día.",p:["Pies en alto 10 a 15 minutos","Frío envuelto en tela si hay inflamación","Masaje suave sin presionar zonas sensibles"],ex:["elevar","masaje"],tarea:"Al final del día, hacé la rutina de descanso."},
+ {t:"Evaluación de tus hábitos",w:1,intro:"Revisá cómo te fue en esta primera semana. No es un examen: es para conocerte.",p:["Marcá los hábitos que ya incorporaste","Mirá cuáles te cuestan más","Elegí uno para mejorar la próxima semana"],ex:[],tarea:"Completá la evaluación.",check:"s1"},
+ {t:"Movilidad de los dedos",w:2,intro:"Empezás a mover tus dedos con ejercicios suaves y controlados.",p:["Movimientos lentos","Sin rebotes","Si duele, pará"],ex:["separar","flexext"],tarea:"Hacé los dos ejercicios del día."},
+ {t:"Separación suave de los dedos",w:2,intro:"Trabajás el control del dedo gordo y la apertura de los dedos.",p:["La apertura debe ser activa, con tus músculos","Los separadores se usan solo si no generan dolor"],ex:["separar","yoga"],tarea:"Practicá el ejercicio «Dedo gordo arriba» con paciencia."},
+ {t:"Movilidad de tobillos",w:2,intro:"Un tobillo con buena movilidad reparte mejor la carga sobre el pie.",p:["Movimientos en todas las direcciones","Con la pierna relajada"],ex:["tobillo","alfabeto"],tarea:"Hacé los ejercicios por la mañana."},
+ {t:"Ejercicios de flexibilidad",w:2,intro:"Estiramientos suaves para pantorrilla y planta.",p:["Mantené cada estiramiento sin rebotar","Sentí tensión suave, nunca dolor"],ex:["pantorrilla","plantar","toallagemelo"],tarea:"Elegí el estiramiento que te resulte más cómodo y repetilo a la noche."},
+ {t:"Fortalecimiento del pie",w:2,intro:"Activás los músculos pequeños que dan estabilidad al pie.",p:["La calidad importa más que la cantidad","Si te cansás, descansá entre series"],ex:["piecorto","toalla","talones"],tarea:"Hacé una vuelta de los tres ejercicios."},
+ {t:"Ejercicios de movilidad",w:2,intro:"Unís los ejercicios de la semana en una rutina corta.",p:["Unos 10 minutos en total","Escuchá a tu cuerpo"],ex:["separar","flexext","tobillo","bolitas"],tarea:"Hacé la rutina completa."},
+ {t:"Repaso semanal",w:2,intro:"Revisá qué ejercicios te resultaron cómodos y cuáles te generaron molestias.",p:["Quedate con los que te hacen sentir bien","Descartá los que molesten","Registrá cómo están tus pies"],ex:[],tarea:"Registrá tu molestia percibida en Mi progreso.",log:true},
+ {t:"Cómo elegir zapatos cómodos",w:3,intro:"Ponés en práctica la guía de calzado con un método de compra.",p:["Probá a la tarde","Con las medias que usás","Los dos pies, caminando en la tienda"],ex:[],tarea:"Hacé el control de tu calzado con la guía.",link:["shoes",null,"Guía de calzado"]},
+ {t:"Qué calzado evitar",w:3,intro:"Algunos calzados aumentan la presión sobre el juanete y los dedos.",p:["Punta fina","Taco alto","Materiales duros o costuras sobre el juanete","Talle chico"],ex:[],tarea:"Separá el calzado que más te molesta y reservalo para ocasiones cortas."},
+ {t:"Plantillas y soportes",w:3,intro:"Las plantillas pueden repartir la presión de la planta. Las personalizadas las indica un profesional.",p:["No corrigen el juanete","Pueden aliviar la planta","Necesitan calzado con espacio"],ex:[],tarea:"Leé el módulo de tratamientos.",link:["treatments",null,"Tratamientos y opciones"]},
+ {t:"Separadores de dedos",w:3,intro:"Los separadores blandos pueden disminuir el roce entre dedos. Usalos con criterio.",p:["Empezá con ratos cortos","Elegí materiales blandos","Retiralos si sentís dolor, roce u hormigueo","No corrigen la deformidad"],ex:[],tarea:"Si los usás, anotá cómo te sentís."},
+ {t:"Cuidados después de caminar",w:3,intro:"Después de una caminata larga, tus pies agradecen unos minutos de cuidado.",p:["Revisá roces y ampollas","Lavá y secá bien","Relajá la planta"],ex:["pelota","elevar"],tarea:"Hacé la rutina después de tu próxima caminata."},
+ {t:"Descanso y recuperación",w:3,intro:"Alternar actividades y descansar bien también cuida tus pies.",p:["Actividades de bajo impacto: bici fija, natación","Pausas si pasás mucho tiempo de pie","Dormir bien ayuda a recuperarte"],ex:["elevar"],tarea:"Planificá una pausa activa en tu día."},
+ {t:"Evaluación de hábitos",w:3,intro:"Compará tus hábitos con los de la semana 1.",p:["Celebrá lo que mejoró","Elegí un hábito para reforzar"],ex:[],tarea:"Completá la evaluación.",check:"s3"},
+ {t:"Rutina de movilidad",w:4,intro:"Tu rutina de movilidad para sostener en el tiempo.",p:["5 a 10 minutos","Podés hacerla mirando televisión"],ex:["separar","yoga","tobillo","alfabeto"],tarea:"Hacé la rutina completa."},
+ {t:"Fortalecimiento",w:4,intro:"Repasás los ejercicios de fuerza con buena técnica.",p:["Movimientos controlados","Descansá entre ejercicios"],ex:["piecorto","bolitas","talones"],tarea:"Hacé una vuelta completa."},
+ {t:"Flexibilidad",w:4,intro:"Estiramientos suaves para cerrar el día.",p:["20 a 30 segundos cada uno","Respirá con calma"],ex:["pantorrilla","plantar","pelota"],tarea:"Hacé los estiramientos antes de dormir."},
+ {t:"Cuidado de la piel",w:4,intro:"Una piel sana se defiende mejor del roce.",p:["Hidratá a diario, sin crema entre los dedos","Limá durezas con suavidad","No cortes callos con objetos filosos","Si tenés diabetes, consultá a un podólogo"],ex:["masaje"],tarea:"Hacé el masaje con crema e inspeccioná la piel."},
+ {t:"Prevención de lesiones",w:4,intro:"Algunas pautas para moverte con seguridad.",p:["Aumentá la actividad de forma gradual","Usá calzado adecuado para cada actividad","Cuidá las superficies irregulares","El dolor es una señal para frenar"],ex:["tobillo"],tarea:"Revisá tu calzado de actividad física."},
+ {t:"Cómo cuidar tus pies diariamente",w:4,intro:"Armás tu rutina diaria de mañana y de noche.",p:["Mañana: movilidad breve y buen calzado","Durante el día: pausas","Noche: revisión, higiene, hidratación y descanso"],ex:["separar","masaje"],tarea:"Escribí tu rutina en una nota y dejala visible."},
+ {t:"Repaso de ejercicios",w:4,intro:"Repasá todos los ejercicios y quedate con tus favoritos.",p:["Elegí los que te resultan cómodos","Mañana vas a evaluar tu progreso"],ex:["separar","flexext","piecorto","pantorrilla","pelota"],tarea:"Marcá los ejercicios que querés mantener."},
+ {t:"Evaluación personal",w:4,intro:"Mirá el camino recorrido durante este mes.",p:["Revisá tus registros de molestia","Completá la evaluación de hábitos","Anotá preguntas para tu próxima consulta"],ex:[],tarea:"Completá la evaluación y registrá tu molestia.",check:"s4",log:true},
+ {t:"Mi nuevo plan de cuidado",w:4,intro:"Elegí los ejercicios y hábitos que vas a mantener. Tu plan queda guardado en Mi progreso.",p:["Pocos ejercicios, bien hechos","Constancia antes que intensidad","Revisá el plan cada mes"],ex:[],tarea:"Armá tu plan personal.",plan:true}
+];
+
+const SHOES = [
+ {id:"ancha",t:"Calzado de punta ancha",ill:()=>shoeTop("wide"),p:["Los dedos se extienden sin apretarse","La forma de la puntera sigue la forma del pie","Menos presión sobre el juanete"]},
+ {id:"zapatillas",t:"Zapatillas cómodas",ill:()=>shoeSide("sneaker"),p:["Suela con amortiguación","Talón firme que sostiene","Capellada de malla o tela blanda sobre el juanete","Cordones o abrojos para ajustar"]},
+ {id:"sandalias",t:"Sandalias",ill:()=>shoeSide("sandal"),p:["Tiras regulables que no pasen sobre el bulto","Sujeción del talón","Suela con algo de soporte","Las chancletas sin sujeción no son ideales para caminar mucho"]},
+ {id:"diario",t:"Calzado para uso diario",ill:()=>shoeSide("flat"),p:["Taco bajo y ancho","Suela firme que no se doble a la mitad","Material blando","Espacio de cerca de 1 cm delante del dedo más largo"]},
+ {id:"presion",t:"Calzado que puede aumentar la presión",ill:()=>shoeSide("heel"),p:["Punta fina","Taco alto: lleva el peso a la parte delantera del pie","Materiales rígidos o costuras sobre el juanete","Talle chico"],bad:true}
+];
+const SHOE_CHECK = ["Puntera ancha y alta","Cerca de 1 cm delante del dedo más largo","Taco bajo y ancho","Material blando sobre el juanete","Talón firme","Suela que no se dobla a la mitad","Lo probé a la tarde, con mis medias","Caminé con los dos zapatos puestos en la tienda"];
+
+const TREATS = [
+ {t:"Tratamientos conservadores",d:"Son los primeros cuidados: calzado adecuado, protectores, frío local y cambios en las actividades.",b:["Alivian el roce y el dolor","Son simples y de bajo riesgo"],l:["No corrigen la deformidad"],c:"Si las molestias persisten pese a estos cuidados."},
+ {t:"Fisioterapia",d:"Un kinesiólogo o fisioterapeuta evalúa tu pie y diseña ejercicios, técnicas manuales y pautas para la marcha.",b:["Mejora movilidad y fuerza","Ejercicios adaptados a tu caso"],l:["No realinea el hueso"],c:"Si querés un programa personalizado o tenés dolor al moverte."},
+ {t:"Plantillas personalizadas",d:"Plantillas hechas a medida que redistribuyen la presión en la planta.",b:["Útiles si hay pie plano o dolor en la planta","Pueden mejorar la comodidad al caminar"],l:["No corrigen el juanete","Necesitan calzado con espacio"],c:"Las indica un podólogo o traumatólogo después de evaluarte."},
+ {t:"Separadores y correctores",d:"Dispositivos de silicona, gel o férulas que separan los dedos o protegen el bulto.",b:["Disminuyen el roce","Pueden aliviar mientras se usan"],l:["No hay evidencia de corrección permanente","Pueden molestar si no son del tamaño adecuado"],c:"Si generan dolor, roce u hormigueo, dejá de usarlos y consultá."},
+ {t:"Evaluación traumatológica",d:"El traumatólogo examina el pie y suele pedir radiografías de pie apoyado para medir la deformidad.",b:["Define el grado","Ordena las opciones de tratamiento"],l:["Requiere consulta presencial"],c:"Ante dolor persistente, deformidad que avanza o dudas sobre qué hacer."},
+ {t:"Cirugía de juanetes",d:"Hay distintas técnicas (osteotomías, técnicas mínimamente invasivas, fusión articular). El cirujano elige según cada caso.",b:["Puede realinear la articulación","Indicada cuando el dolor limita la vida diaria pese a otros tratamientos"],l:["Tiene riesgos: rigidez, dolor persistente, infección, reaparición","No se recomienda solo por estética"],c:"La decisión se toma junto con un traumatólogo especialista en pie."},
+ {t:"Recuperación posquirúrgica",d:"Incluye calzado especial, control del dolor y la hinchazón, y una vuelta gradual a la actividad.",b:["Seguir las pautas mejora la recuperación"],l:["La hinchazón puede durar meses","Los plazos varían según la técnica y la persona"],c:"Los tiempos y ejercicios los define tu equipo médico."}
+];
+
+/* =========================================================
+   ESTADO
+   ========================================================= */
+const blank = ()=>({ack:false,started:null,done:{},ex:{},exLog:[],logs:[],checks:{},plan:null,last:null,shoeCheck:{}});
+let S = blank();
+const esc = s => String(s??"").replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* Cuentas y sincronización */
+const CLOUD = !!(SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase);
+const sb = CLOUD ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+let USER = null, syncT = null, syncState = "ok";
+const storeKey = () => USER ? `${KEY}:${USER.id}` : KEY;
+function loadLocal(k=storeKey()){ try{ const raw = localStorage.getItem(k); return raw ? Object.assign(blank(), JSON.parse(raw)) : null; }catch(e){ return null; } }
+function save(){
+  try{ localStorage.setItem(storeKey(), JSON.stringify(S)); }catch(e){}
+  if(USER){ clearTimeout(syncT); syncState="saving"; updSync(); syncT = setTimeout(pushRemote, 800); }
+}
+async function pushRemote(){
+  try{
+    const { error } = await sb.from("progress").upsert({ user_id: USER.id, data: S, updated_at: new Date().toISOString() });
+    syncState = error ? "error" : "ok";
+  }catch(e){ syncState = "error"; }
+  updSync();
+}
+async function pullRemote(){
+  const { data, error } = await sb.from("progress").select("data").eq("user_id", USER.id).maybeSingle();
+  if(error) throw error;
+  if(data && data.data && Object.keys(data.data).length){ S = Object.assign(blank(), data.data); }
+  else { S = loadLocal() || loadLocal(KEY) || blank(); await pushRemote(); }
+  try{ localStorage.setItem(storeKey(), JSON.stringify(S)); }catch(e){}
+}
+const SYNC_TXT = {ok:"Progreso guardado en tu cuenta",saving:"Guardando…",error:"Sin conexión: se guardó en este dispositivo y se sincroniza al reconectar"};
+function updSync(){ const el=document.getElementById("syncst"); if(el){ el.textContent=SYNC_TXT[syncState]; el.style.color = syncState==="error"?"var(--warn)":"var(--muted)"; } }
+window.addEventListener("online", ()=>{ if(USER && syncState==="error") pushRemote(); });
+const userName = () => (USER?.user_metadata?.name || "").trim();
+
+if(!CLOUD) S = loadLocal() || blank();
+const today = ()=> new Date().toISOString().slice(0,10);
+const doneCount = ()=> Object.keys(S.done).length;
+const pct = ()=> Math.round(doneCount()/30*100);
+const nextDay = ()=> { for(let i=1;i<=30;i++) if(!S.done[i]) return i; return 30; };
+const exToday = id => S.exLog.some(l=>l.id===id && l.d===today());
+const fmtDate = d => new Date(d+"T12:00:00").toLocaleDateString("es-AR",{day:"numeric",month:"short"});
+
+/* =========================================================
+   NAVEGACIÓN
+   ========================================================= */
+const TABS = [["home","Inicio",I.home],["program","Mi programa",I.cal],["exercises","Ejercicios",I.foot],["learn","Aprendé",I.book],["progress","Mi progreso",I.chart]];
+const TAB_HASH = {inicio:"home",programa:"program",ejercicios:"exercises",aprende:"learn",progreso:"progress"};
+const TAB_OF = {day:"program",exercise:"exercises",topic:"learn",problems:"learn",problem:"learn",shoes:"learn",treatments:"learn",bonus:"learn",calendar:"learn",safety:"home",terminos:"home",privacidad:"home"};
+let stack = [];
+let cur = {v:"home",p:null};
+
+function go(v,p=null,push=true){
+  if(push && !TABS.some(t=>t[0]===v)) stack.push(cur); else if(TABS.some(t=>t[0]===v)) stack=[];
+  cur = {v,p};
+  if(["day","exercise","topic"].includes(v)){ S.last={v,p}; save(); }
+  render();
+  window.scrollTo({top:0});
+}
+function back(){ const prev = stack.pop(); if(prev){ cur=prev; render(); window.scrollTo({top:0}); } else go("home"); }
+
+function renderNav(){
+  const active = TAB_OF[cur.v] || cur.v;
+  document.getElementById("nav").innerHTML = TABS.map(t=>`<li><button data-go="${t[0]}" ${active===t[0]?'aria-current="page"':''}>${t[2]}<span>${t[1]}</span></button></li>`).join("");
+}
+function renderTop(title){
+  const isTab = TABS.some(t=>t[0]===cur.v);
+  document.getElementById("top").innerHTML = isTab
+    ? `<div class="brand">${I.foot.replace('<svg','<svg width="22" height="22"')}Pies sin molestias</div><div class="spacer"></div><button class="iconbtn" data-go="safety" aria-label="Seguridad y responsabilidad">${I.shield}</button>`
+    : `<button class="iconbtn" data-act="back" aria-label="Volver">${I.back}</button><div class="ttl">${title||""}</div>`;
+}
+
+let toastT;
+function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.hidden=false; clearTimeout(toastT); toastT=setTimeout(()=>t.hidden=true,2200); }
+
+/* =========================================================
+   COMPONENTES
+   ========================================================= */
+const tapCard = (go,param,ill,title,sub,extra="") => `<button class="tap" data-go="${go}" ${param!=null?`data-p="${param}"`:""}><div class="ill">${ill}</div><div class="txt"><b>${title}</b>${sub?`<span>${sub}</span>`:""}${extra}</div><div class="go">${I.next}</div></button>`;
+const progressBar = (v)=> `<div class="bar" role="progressbar" aria-valuenow="${v}" aria-valuemin="0" aria-valuemax="100"><i style="width:${v}%"></i></div>`;
+function ring(v){ const r=34,c=2*Math.PI*r; return `<svg class="ring" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="${r}" fill="none" stroke="color-mix(in srgb,var(--bg) 25%,transparent)" stroke-width="9"/><circle cx="42" cy="42" r="${r}" fill="none" stroke="var(--accent)" stroke-width="9" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-v/100)}" transform="rotate(-90 42 42)"/><text x="42" y="48" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="18" fill="currentColor">${v}%</text></svg>`; }
+const list = arr => `<ul class="dots">${arr.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+const disclaimerBox = () => `<div class="alert">${I.alert}<p class="small">${DISCLAIMER}</p></div>`;
+const redFlagsBox = () => `<div class="alert red">${I.alert}<div class="stack"><b>Buscá evaluación médica si tenés:</b>${list(REDFLAGS)}</div></div>`;
+const weekOf = n => WEEKS[DAYS[n-1].w-1];
+
+/* =========================================================
+   INSTALAR COMO APP
+   ========================================================= */
+let installEvt = null;
+const inFrame = (()=>{ try{ return window.self !== window.top; }catch(e){ return true; } })();
+const isStandalone = () => (typeof matchMedia==="function" && matchMedia("(display-mode: standalone)").matches) || (typeof navigator!=="undefined" && navigator.standalone===true);
+const isIOS = typeof navigator!=="undefined" && (/iphone|ipad|ipod/i.test(navigator.userAgent||"") || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1));
+window.addEventListener("beforeinstallprompt", e=>{ e.preventDefault(); installEvt=e; if(["home","progress"].includes(cur.v)) render(); });
+window.addEventListener("appinstalled", ()=>{ installEvt=null; toast("App instalada en tu celular"); render(); });
+if(typeof navigator!=="undefined" && "serviceWorker" in navigator && !inFrame && location.protocol==="https:"){
+  navigator.serviceWorker.register("sw.js").catch(()=>{});
+}
+function installCard(){
+  if(inFrame || isStandalone()) return "";
+  if(installEvt) return `<section class="card row" style="justify-content:space-between"><div style="min-width:0;flex:1"><div class="eyebrow">Tenela a mano</div><b>Instalá Pies sin molestias en tu celular</b><p class="small muted">Se abre como una app, desde tu pantalla de inicio.</p></div><button class="btn primary" data-act="install">INSTALAR</button></section>`;
+  if(isIOS) return `<section class="card stack"><div class="eyebrow">Tenela a mano</div><b>Agregala a tu pantalla de inicio</b><ol class="steps small"><li><span>Tocá el botón <b>Compartir</b> de Safari (el cuadrado con una flecha hacia arriba).</span></li><li><span>Elegí <b>Agregar a inicio</b>.</span></li><li><span>Tocá <b>Agregar</b>. Listo: la abrís desde el ícono rosa.</span></li></ol></section>`;
+  return "";
+}
+
+/* =========================================================
+   TEXTOS LEGALES
+   ========================================================= */
+const LEGAL_TXT = {
+ privacidad:{t:"Política de privacidad",s:[
+  ["Quién es responsable de tus datos",[`${LEGAL.titular} (${LEGAL.doc}), con domicilio en ${LEGAL.domicilio}, es responsable de los datos personales que se tratan en Pies sin molestias. Podés escribirnos a ${LEGAL.email}.`]],
+  ["Qué datos guardamos",["Datos de tu cuenta: nombre y email. La contraseña la guarda cifrada nuestro proveedor y nadie puede leerla.","Tu uso del programa: días completados, ejercicios realizados, evaluaciones de hábitos, tu plan personal y la lista de calzado.","Los registros de molestia que cargues (nivel, zona y notas). Son datos de salud y la ley los considera datos sensibles. Cargarlos es opcional."]],
+  ["Para qué los usamos",["Solo para mostrarte tu progreso y que lo veas desde cualquier dispositivo. No los vendemos, no los usamos para publicidad y no los compartimos con nadie, salvo los proveedores técnicos que hacen funcionar la app."]],
+  ["Tu consentimiento",["Al crear tu cuenta das tu consentimiento libre, expreso e informado para que tratemos estos datos, incluidos los datos de salud que decidas registrar, según los artículos 5 y 7 de la Ley 25.326 de Protección de Datos Personales. Podés retirarlo cuando quieras pidiendo la baja de tu cuenta."]],
+  ["Dónde se guardan",["Si usás la app sin cuenta, tus datos quedan solo en tu dispositivo.","Con cuenta, se guardan en los servidores de Supabase, nuestro proveedor de base de datos, que pueden estar fuera de la Argentina. La conexión está cifrada y cada persona solo puede ver y modificar sus propios datos."]],
+  ["Cuánto tiempo los conservamos",["Mientras tengas tu cuenta. Si pedís la baja, los eliminamos."]],
+  ["Tus derechos",[`Podés acceder, rectificar, actualizar y suprimir tus datos en forma gratuita escribiendo a ${LEGAL.email}. El derecho de acceso puede ejercerse en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo (artículo 14, inciso 3 de la Ley 25.326). También podés borrar tu progreso y tus registros cuando quieras desde Mi progreso.`,"La AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, en su carácter de Órgano de Control de la Ley N° 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales."]],
+  ["Almacenamiento en tu dispositivo",["La app usa el almacenamiento de tu navegador para guardar tu sesión y tu progreso. No usamos cookies de publicidad ni de seguimiento."]],
+  ["Cambios",["Si cambiamos esta política, vas a ver la nueva versión en esta pantalla con su fecha de actualización."]]
+ ]},
+ terminos:{t:"Términos de uso",s:[
+  ["Qué es Pies sin molestias",["Es un programa educativo y de bienestar para aprender a cuidar tus pies. No es un servicio médico, no hace diagnósticos y no reemplaza la consulta con un profesional de la salud."]],
+  ["Tu salud primero",["Los ejercicios son suaves y educativos. No corrigen la deformidad ósea ni garantizan la desaparición del dolor. Suspendé cualquier actividad que te provoque molestias y consultá a un profesional ante dolor intenso, enrojecimiento importante, heridas, hinchazón repentina o dificultad para caminar.","Si tenés diabetes, problemas de circulación o de sensibilidad en los pies, consultá a tu médico antes de empezar."]],
+  ["Tu acceso",["Tu compra te da una licencia personal e intransferible para usar el programa. No compartas tu cuenta.","Los textos, fotos, ilustraciones y el diseño están protegidos por derechos de autor. No está permitido copiarlos, distribuirlos ni revenderlos."]],
+  ["Compra y arrepentimiento",[`La compra se procesa en la plataforma de pago indicada en la página de venta. Según el artículo 34 de la Ley 24.240 de Defensa del Consumidor, podés revocar la compra dentro de los 10 días corridos desde que la hiciste, sin costo y sin dar explicaciones, usando el botón de arrepentimiento de la página de venta o escribiendo a ${LEGAL.email}.`]],
+  ["Responsabilidad",["Hacemos lo posible para que la información sea clara y confiable, pero cada cuerpo es distinto y no podemos garantizar resultados. En la medida que lo permita la ley, no somos responsables por el uso del programa en contra de estas indicaciones."]],
+  ["Cambios y disponibilidad",["Podemos mejorar o actualizar los contenidos. Si hay un cambio importante en estos términos, te lo vamos a avisar en la app."]],
+  ["Ley aplicable y contacto",[`Rigen las leyes de la República Argentina, incluida la Ley 24.240 de Defensa del Consumidor. Por cualquier consulta, escribinos a ${LEGAL.email}.`]]
+ ]}
+};
+function legalView(k){
+  const L = LEGAL_TXT[k];
+  return `<div class="stack"><div class="eyebrow">Legal</div><h1 class="h2">${L.t}</h1><p class="small muted">Última actualización: ${LEGAL.actualizado}</p></div>
+  ${L.s.map(([h,ps])=>`<section class="card stack"><h2 class="h3">${h}</h2>${ps.map(p=>`<p>${p}</p>`).join("")}</section>`).join("")}
+  <button class="btn ghost" data-go="${k==="terminos"?"privacidad":"terminos"}" data-replace="1">${k==="terminos"?"Ver política de privacidad":"Ver términos de uso"} ${I.next}</button>`;
+}
+const legalLinks = () => `<p class="small muted" style="text-align:center"><button class="linkbtn" data-go="terminos" style="min-height:0;padding:0 4px">Términos de uso</button> · <button class="linkbtn" data-go="privacidad" style="min-height:0;padding:0 4px">Privacidad</button></p>`;
+
+/* =========================================================
+   VISTAS
+   ========================================================= */
+const V = {};
+V.terminos = () => legalView("terminos");
+V.privacidad = () => legalView("privacidad");
+
+V.home = ()=>{
+  const n = nextDay(), started = !!S.started, all = doneCount()===30;
+  const last = S.last;
+  let lastLbl = "";
+  if(last){ if(last.v==="day") lastLbl=`Día ${last.p}: ${DAYS[last.p-1].t}`; else if(last.v==="exercise") lastLbl=exById(last.p)?.n; else if(last.v==="topic") lastLbl=TOPICS.find(t=>t.id===last.p)?.t; }
+  return `
+  <section class="hero">
+    <div class="eyebrow">${userName()?`Hola, ${esc(userName())}`:"Programa de cuidado de los pies · 30 días"}</div>
+    <h1>Pies <span>sin</span> molestias</h1>
+    <p class="sub">Tu camino hacia unos pies más cuidados y una caminata más cómoda.</p>
+    <div class="art">${pic("portada","Pies descalzos descansando sobre una alfombra rosa en un living luminoso")}</div>
+    <div class="stack noprint">
+      <button class="btn primary block" data-act="${started?'continue':'start'}">${I.play}${started? (all?'VER MI PLAN':`CONTINUAR · DÍA ${n}`) : 'COMENZAR MI PROGRAMA'}</button>
+    </div>
+  </section>
+
+  <section class="feature">
+    ${ring(pct())}
+    <div class="stack" style="gap:6px;min-width:0">
+      <p style="font-family:var(--f-display);font-weight:700;font-size:19px;line-height:1.25">30 días para aprender a cuidar tus pies, mejorar su movilidad y adoptar hábitos más saludables.</p>
+      <p class="small" style="opacity:.8">${doneCount()} de 30 días completados</p>
+    </div>
+  </section>
+
+  ${installCard()}
+
+  ${last && lastLbl ? `<section class="card stack"><div class="eyebrow">Retomá donde quedaste</div>${tapCard(last.v,last.p, last.v==="exercise"?pic("ex-"+last.p): last.v==="day"? `<span class="h3" style="color:var(--accent-ink)">${last.p}</span>` : I.book, lastLbl, "Última actividad")}</section>`:""}
+
+  <section class="stack">
+    <div class="sec-title"><h2 class="h2">Explorá</h2></div>
+    <div class="grid">
+      ${tapCard("problems",null,pic("prob-juanete"),"¿Qué problema tenés?","Juanetes, dedos desviados, callos y más")}
+      ${tapCard("learn",null,pic("tema-anatomia"),"Conocé tus pies","10 temas con mapas mentales")}
+      ${tapCard("exercises",null,pic("ex-toalla"),"Biblioteca de ejercicios","15 ejercicios con fotos")}
+      ${tapCard("shoes",null,pic("calz-ancha"),"Guía de calzado","Qué elegir y qué evitar")}
+      ${tapCard("treatments",null,pic("tema-grados"),"Tratamientos y opciones médicas","Qué existe y para qué sirve")}
+      ${tapCard("bonus",null,pic("tema-mitos"),"Tus 3 bonos","Ejercicios, calzado y calendario")}
+    </div>
+  </section>
+
+  <p class="small muted" style="text-align:center">Programa educativo y de bienestar. <button class="linkbtn" data-go="safety" style="min-height:0;padding:0">Ver indicaciones de seguridad</button></p>
+  ${legalLinks()}`;
+};
+
+V.program = ()=>{
+  const n = nextDay();
+  return `<div class="stack"><div class="eyebrow">Mi programa</div><h1 class="h2">Tu calendario de 30 días</h1><p class="muted">Tocá un día para ver la actividad. Podés avanzar a tu ritmo.</p>${progressBar(pct())}<p class="small muted">${doneCount()} de 30 días · ${pct()}%</p></div>
+  ${WEEKS.map(w=>{
+    const days = DAYS.map((d,i)=>({...d,n:i+1})).filter(d=>d.w===w.n);
+    const dn = days.filter(d=>S.done[d.n]).length;
+    return `<section class="week ${w.c}" style="background:var(--${w.c})">
+      <div class="row" style="justify-content:space-between"><div><div class="eyebrow" style="color:inherit;opacity:.8">Semana ${w.n}</div><h2 class="h3" style="font-size:22px">${w.t}</h2></div><span class="chip" style="background:color-mix(in srgb,var(--surface) 70%,transparent);color:var(--ink)">${dn}/${days.length}</span></div>
+      ${progressBar(Math.round(dn/days.length*100))}
+      <div class="days">${days.map(d=>`<button class="day ${S.done[d.n]?'is-done':''} ${d.n===n&&!S.done[d.n]?'is-next':''}" data-go="day" data-p="${d.n}">${S.done[d.n]?`<span class="tick">${I.check}</span>`:""}<small>Día ${d.n}</small><b>${d.t}</b></button>`).join("")}</div>
+    </section>`;}).join("")}`;
+};
+
+V.day = n=>{
+  n = +n; const d = DAYS[n-1], w = WEEKS[d.w-1], done = !!S.done[n];
+  let special = "";
+  if(d.check){
+    const ch = S.checks[d.check]||{};
+    const cnt = HABITS.filter((_,i)=>ch[i]).length;
+    special = `<section class="card stack"><h2 class="h3">Evaluación de hábitos</h2><p class="small muted">Marcá lo que ya hacés. No hay respuestas correctas ni incorrectas.</p>
+      ${HABITS.map((h,i)=>`<label class="check"><input type="checkbox" id="h-${d.check}-${i}" data-habit="${d.check}" data-i="${i}" ${ch[i]?"checked":""}><span>${h}</span></label>`).join("")}
+      <p class="chip pink" id="habit-sum">${cnt} de ${HABITS.length} hábitos incorporados</p></section>`;
+  }
+  if(d.plan){
+    const sel = new Set(S.plan?.ex||[]);
+    special = `<section class="card stack"><h2 class="h3">Elegí tus ejercicios</h2><p class="small muted">Recomendamos entre 3 y 6 ejercicios que te resulten cómodos.</p>
+      ${EX.map(e=>`<label class="check"><input type="checkbox" id="plan-${e.id}" data-plan="${e.id}" ${sel.has(e.id)?"checked":""}><span><b>${e.n}</b><br><span class="small muted">${CATS[e.cat]} · ${e.tiempo}</span></span></label>`).join("")}
+      <h2 class="h3">Frecuencia</h2>
+      <div class="chips" id="freq">${["3 veces por semana","5 veces por semana","Todos los días"].map(f=>`<button data-freq="${f}" aria-pressed="${(S.plan?.freq||'5 veces por semana')===f}">${f}</button>`).join("")}</div>
+      <button class="btn primary block" data-act="saveplan">${I.check} GUARDAR MI PLAN</button></section>`;
+  }
+  return `
+  <section class="week ${w.c}" style="background:var(--${w.c})"><div class="eyebrow" style="color:inherit;opacity:.8">Semana ${w.n} · Día ${n} de 30</div><h1 class="h2">${d.t}</h1><p>${d.intro}</p></section>
+  <section class="card stack"><h2 class="h3">Lo importante de hoy</h2>${list(d.p)}</section>
+  ${d.ex.length?`<section class="stack"><h2 class="h3">Ejercicios del día</h2>${d.ex.map(id=>{const e=exById(id);return tapCard("exercise",id,pic("ex-"+e.id),e.n,e.tiempo, exToday(id)?`<span class="chip ok" style="margin-top:6px">${I.check.replace('<svg','<svg width="14" height="14"')} Hecho hoy</span>`:"");}).join("")}</section>`:""}
+  <section class="soft stack"><div class="eyebrow">Tu tarea</div><p style="font-weight:700">${d.tarea}</p>
+    ${d.link?`<button class="btn ghost" data-go="${d.link[0]}" ${d.link[1]?`data-p="${d.link[1]}"`:""}>${d.link[2]} ${I.next}</button>`:""}
+    ${d.log?`<button class="btn ghost" data-go="progress" data-p="log">Registrar molestia ${I.next}</button>`:""}
+  </section>
+  ${special}
+  <button class="btn ${done?'done':'primary'} block" data-act="toggleday" data-p="${n}">${I.check} ${done?'DÍA COMPLETADO':'MARCAR DÍA COMO COMPLETADO'}</button>
+  <div class="grid2">
+    ${n>1?`<button class="btn ghost" data-go="day" data-p="${n-1}" data-replace="1">${I.back} Día ${n-1}</button>`:"<span></span>"}
+    ${n<30?`<button class="btn ghost" data-go="day" data-p="${n+1}" data-replace="1">Día ${n+1} ${I.next}</button>`:"<span></span>"}
+  </div>`;
+};
+
+let exFilter = "all";
+V.exercises = ()=>{
+  const items = EX.filter(e=>exFilter==="all"||e.cat===exFilter);
+  const total = S.exLog.length;
+  return `<div class="stack"><div class="eyebrow">Biblioteca de ejercicios</div><h1 class="h2">15 ejercicios para cuidar tus pies</h1><p class="muted">Ejercicios suaves y fáciles de seguir. Realizados en total: <b>${total}</b>.</p></div>
+  <div class="tabs" role="toolbar" aria-label="Categorías">${[["all","Todos"],...Object.entries(CATS)].map(([k,v])=>`<button data-filter="${k}" aria-pressed="${exFilter===k}">${v}</button>`).join("")}</div>
+  <div class="grid">${items.map(e=>tapCard("exercise",e.id,pic("ex-"+e.id),e.n,`${CATS[e.cat]} · ${e.tiempo}`, exToday(e.id)?`<span class="chip ok" style="margin-top:6px">${I.check.replace('<svg','<svg width="14" height="14"')} Hecho hoy</span>`:"" )).join("")}</div>`;
+};
+
+V.exercise = id=>{
+  const e = exById(id); const cnt = S.ex[id]||0; const doneT = exToday(id);
+  return `${pic("ex-"+e.id,e.n,"photo")}
+  <div class="stack"><span class="chip pink" style="align-self:flex-start">${CATS[e.cat]}</span><h1 class="h2">${e.n}</h1><p class="row muted small">${I.clock.replace('<svg','<svg width="18" height="18"')} ${e.tiempo}</p></div>
+  <section class="card stack"><div class="eyebrow">Objetivo</div><p>${e.obj}</p></section>
+  <section class="card stack"><h2 class="h3">Paso a paso</h2><ol class="steps">${e.pasos.map(s=>`<li><span>${s}</span></li>`).join("")}</ol></section>
+  <section class="card stack"><div class="eyebrow">Esquema del movimiento</div><div class="illus">${exIll(e.ill)}</div></section>
+  <section class="soft stack"><h2 class="h3">Tené en cuenta</h2>${list([...e.prec,"El ejercicio no debe doler."])}</section>
+  <button class="btn ${doneT?'done':'primary'} block" data-act="exdone" data-p="${id}">${I.check} ${doneT?'REALIZADO HOY · SUMAR OTRA VEZ':'MARCAR COMO REALIZADO'}</button>
+  <p class="small muted" style="text-align:center">Lo realizaste ${cnt} ${cnt===1?'vez':'veces'}.</p>`;
+};
+
+V.learn = ()=>`
+  <div class="stack"><div class="eyebrow">Aprendé</div><h1 class="h2">Conocé tus pies</h1><p class="muted">Temas cortos, con mapas mentales e ilustraciones.</p></div>
+  <div class="grid">${TOPICS.map((t,i)=>tapCard("topic",t.id,temaPic(t)||t.ill(),t.t,`Tema ${i+1} de ${TOPICS.length}`)).join("")}</div>
+  <h2 class="h2">Más contenidos</h2>
+  <div class="grid">
+    ${tapCard("problems",null,pic("prob-cruzados"),"¿Qué problema tenés?","Fichas educativas por molestia")}
+    ${tapCard("shoes",null,pic("calz-zapatillas"),"Guía de calzado","Bono 2")}
+    ${tapCard("treatments",null,pic("tema-grados"),"Tratamientos y opciones médicas","Beneficios y límites")}
+    ${tapCard("bonus",null,pic("tema-mitos"),"Bonos especiales","3 módulos extra")}
+    ${tapCard("safety",null,`<span style="color:var(--accent-ink)">${I.shield.replace('<svg','<svg width="40" height="40"')}</span>`,"Seguridad","Cuándo consultar")}
+  </div>`;
+
+V.topic = id=>{
+  const t = TOPICS.find(x=>x.id===id), i = TOPICS.indexOf(t);
+  const ph = temaPic(t,"photo");
+  return `${ph || `<div class="illus">${t.ill()}</div>`}
+  <div class="stack"><div class="eyebrow">Tema ${i+1} de ${TOPICS.length}</div><h1 class="h2">${t.t}</h1><p>${t.intro}</p></div>
+  ${ph && TEMA_DIAG.has(t.id) ? `<section class="card stack"><div class="eyebrow">Esquema</div><div class="illus">${t.ill()}</div></section>` : ""}
+  <section class="card stack"><h2 class="h3">Mapa mental</h2><div class="mm"><div class="mm-c">${t.map.c}</div><div class="mm-bs">${t.map.b.map(b=>`<div class="mm-b"><b>${b[0]}</b><div class="leaves">${b[1].map(l=>`<span>${l}</span>`).join("")}</div></div>`).join("")}</div></div></section>
+  ${t.myths?`<section class="stack"><h2 class="h3">¿Mito o verdad?</h2>${t.myths.map(m=>`<div class="myth"><span class="tag ${m[0]}">${{m:"Mito",v:"Verdad",d:"Depende"}[m[0]]}</span><b>${m[1]}</b><p class="small muted">${m[2]}</p></div>`).join("")}</section>`:""}
+  <section class="card stack"><h2 class="h3">Conceptos importantes</h2>${list(t.con)}</section>
+  <section class="soft stack"><h2 class="h3">Consejos de cuidado</h2>${list(t.tip)}</section>
+  <div class="grid2">${i>0?`<button class="btn ghost" data-go="topic" data-p="${TOPICS[i-1].id}" data-replace="1">${I.back} Anterior</button>`:"<span></span>"}${i<TOPICS.length-1?`<button class="btn ghost" data-go="topic" data-p="${TOPICS[i+1].id}" data-replace="1">Siguiente ${I.next}</button>`:"<span></span>"}</div>`;
+};
+
+V.problems = ()=>`
+  <div class="stack"><div class="eyebrow">¿Qué problema tenés?</div><h1 class="h2">Elegí lo que más se parece a lo que sentís</h1><p class="muted">Cada tarjeta abre una ficha con todo lo que necesitás saber.</p></div>
+  <div class="grid">${CONDS.map(c=>tapCard("problem",c.id,pic("prob-"+c.id),c.t,c.s)).join("")}</div>`;
+
+V.problem = id=>{
+  const c = CONDS.find(x=>x.id===id);
+  const blk = (t,arr,cls="card") => `<section class="${cls} stack"><h2 class="h3">${t}</h2>${list(arr)}</section>`;
+  return `${pic("prob-"+id,c.t,"photo")}
+  <div class="stack"><div class="eyebrow">Ficha educativa</div><h1 class="h2">${c.t}</h1></div>
+  <section class="card stack"><h2 class="h3">Qué significa</h2><p>${c.que}</p></section>
+  ${blk("Características",c.car)}${blk("Qué molestias puede provocar",c.mol)}${blk("Cuidados generales",c.cui,"soft")}
+  ${blk("Cuándo consultar a un profesional",c.pro)}
+  ${id==="martillo"?`<div class="grid2"><div class="illus">${toeSide("normal")}</div><div class="illus">${toeSide("garra")}</div></div>`:""}`;
+};
+
+V.shoes = ()=>{
+  const cnt = SHOE_CHECK.filter((_,i)=>S.shoeCheck[i]).length;
+  return `<div class="stack"><div class="eyebrow">Bono 2 · Guía de calzado</div><h1 class="h2">Elegí zapatos que respeten tu pie</h1><p class="muted">El calzado no corrige el juanete, pero puede reducir mucho el roce y la presión.</p></div>
+  <section class="card stack"><h2 class="h3">Comparación rápida</h2>
+    <div class="compare"><div class="c good"><span class="lbl">Mejor opción</span>${shoeTop("wide")}<p class="small">Puntera ancha: los dedos tienen lugar.</p></div><div class="c bad"><span class="lbl">Aumenta la presión</span>${shoeTop("point")}<p class="small">Punta fina: aprieta el juanete y el quinto dedo.</p></div></div>
+    <div class="compare"><div class="c good"><span class="lbl">Mejor opción</span>${shoeSide("flat")}<p class="small">Taco bajo: el peso se reparte en todo el pie.</p></div><div class="c bad"><span class="lbl">Aumenta la presión</span>${shoeSide("heel")}<p class="small">Taco alto: carga la parte delantera.</p></div></div>
+  </section>
+  <div class="grid">${SHOES.map(s=>`<section class="card stack">${pic("calz-"+s.id,s.t,"photo")}<h2 class="h3">${s.bad?`<span class="tag m" style="display:inline-block;margin-bottom:6px">Evitar</span><br>`:""}${s.t}</h2>${list(s.p)}</section>`).join("")}</div>
+  <section class="card stack"><h2 class="h3">Características de un calzado adecuado</h2><p class="small muted">Usá esta lista cuando vayas a comprar.</p>
+    ${SHOE_CHECK.map((h,i)=>`<label class="check"><input type="checkbox" id="shoe-${i}" data-shoe="${i}" ${S.shoeCheck[i]?"checked":""}><span>${h}</span></label>`).join("")}
+    <p class="chip pink" id="shoe-sum">${cnt} de ${SHOE_CHECK.length} criterios</p></section>`;
+};
+
+V.treatments = ()=>`
+  <div class="stack"><div class="eyebrow">Tratamientos y opciones médicas</div><h1 class="h2">Qué opciones existen</h1><p class="muted">Conocé cada alternativa, sus beneficios y sus límites.</p></div>
+  ${TREATS.map(t=>`<section class="card stack"><h2 class="h3">${t.t}</h2><p>${t.d}</p>
+    <div class="compare"><div class="c good"><span class="lbl">Beneficios</span>${list(t.b)}</div><div class="c bad"><span class="lbl">Limitaciones</span>${list(t.l)}</div></div>
+    <p class="small"><b>Cuándo:</b> ${t.c}</p></section>`).join("")}`;
+
+let logLevel = null, logZones = new Set();
+V.progress = (p)=>{
+  const logs = [...S.logs].sort((a,b)=>a.d<b.d?1:-1);
+  const n = nextDay();
+  const spark = (()=>{ const L=[...S.logs].sort((a,b)=>a.d<b.d?-1:1).slice(-14); if(L.length<2) return ""; const w=300,h=90,stp=w/(L.length-1);
+    const pts=L.map((l,i)=>[i*stp, h-8-(l.v/10)*(h-16)]); const d="M"+pts.map(p=>p.map(x=>x.toFixed(1)).join(" ")).join(" L");
+    return `<svg viewBox="-6 -6 ${w+12} ${h+24}" style="width:100%;height:auto" role="img" aria-label="Evolución de la molestia percibida"><line x1="0" y1="${h-8}" x2="${w}" y2="${h-8}" stroke="var(--line)"/><line x1="0" y1="8" x2="${w}" y2="8" stroke="var(--line)" stroke-dasharray="3 4"/><text x="0" y="4" class="tx" style="font-size:11px;fill:var(--muted)">10</text><text x="0" y="${h+10}" class="tx" style="font-size:11px;fill:var(--muted)">0</text><path d="${d} L${w} ${h-8} L0 ${h-8} Z" fill="var(--pastel)" opacity=".5"/><path d="${d}" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round"/>${pts.map((q,i)=>`<circle cx="${q[0]}" cy="${q[1]}" r="${i===pts.length-1?6:3.5}" fill="var(--accent)"/>`).join("")}</svg>`; })();
+  const lvColor = v => v<=3?"var(--ok-bg)":v<=6?"var(--warn-bg)":"var(--bad-bg)";
+  return `<div class="stack"><div class="eyebrow">Mi progreso</div><h1 class="h2">Tu panel personal</h1><p class="small muted">${USER?"Tu progreso se guarda automáticamente en tu cuenta.":"Tu progreso se guarda automáticamente en este dispositivo."}</p></div>
+  ${USER?`<section class="card row" style="justify-content:space-between"><div style="min-width:0"><div class="eyebrow">Mi cuenta</div><b>${esc(userName()||"Mi cuenta")}</b><p class="small muted" style="overflow-wrap:anywhere">${esc(USER.email)}</p><p class="small" id="syncst" style="color:var(--muted)">${SYNC_TXT[syncState]}</p></div><button class="btn ghost" data-act="logout">Cerrar sesión</button></section>`:""}
+  <div class="stats">
+    <div class="stat"><b>${doneCount()}/30</b><span>Días completados</span></div>
+    <div class="stat"><b>${pct()}%</b><span>Del programa</span></div>
+    <div class="stat"><b>${S.exLog.length}</b><span>Ejercicios realizados</span></div>
+    <div class="stat"><b>${S.logs.length}</b><span>Registros de molestia</span></div>
+  </div>
+  ${progressBar(pct())}
+  <button class="btn primary block" data-go="day" data-p="${S.last?.v==='day'?S.last.p:n}">${I.play} RETOMAR · DÍA ${S.last?.v==='day'?S.last.p:n}</button>
+
+  <section class="card stack"><h2 class="h3">Calendario</h2>
+    <div class="cal">${DAYS.map((d,i)=>`<button class="${S.done[i+1]?'d':''}" style="background:var(--${WEEKS[d.w-1].c});${d.w===4&&!S.done[i+1]?'color:var(--w4-ink)':''}" data-go="day" data-p="${i+1}" aria-label="Día ${i+1}${S.done[i+1]?' completado':''}">${i+1}</button>`).join("")}</div>
+    <div class="row small muted"><span class="chip" style="background:var(--ok);color:var(--bg)">Completado</span> ${WEEKS.map(w=>`<span class="chip" style="background:var(--${w.c});color:${w.n===4?'var(--w4-ink)':'var(--w-ink)'}">Sem. ${w.n}</span>`).join("")}</div>
+  </section>
+
+  <section class="card stack" id="log"><h2 class="h3">Registrar molestia percibida</h2><p class="small muted">0 = sin molestia · 10 = la peor molestia que imaginás.</p>
+    <div class="scale" id="scale">${Array.from({length:11},(_,i)=>`<button data-lv="${i}" aria-pressed="${logLevel===i}">${i}</button>`).join("")}</div>
+    <p style="font-weight:700">¿Dónde?</p>
+    <div class="chips" id="zones">${["Dedo gordo","Otros dedos","Planta","Talón","Tobillo","Al calzarme"].map(z=>`<button data-zone="${z}" aria-pressed="${logZones.has(z)}">${z}</button>`).join("")}</div>
+    <label for="lognote" style="font-weight:700">Nota (opcional)</label>
+    <textarea id="lognote" rows="2" placeholder="Ej.: después de caminar 30 minutos con zapatillas"></textarea>
+    <button class="btn primary block" data-act="savelog">${I.check} GUARDAR REGISTRO</button>
+  </section>
+
+  ${logs.length?`<section class="card stack"><h2 class="h3">Historial</h2>${spark}<div>${logs.slice(0,12).map(l=>`<div class="log"><div class="lv" style="background:${lvColor(l.v)}">${l.v}</div><div style="min-width:0"><b>${fmtDate(l.d)}</b><p class="small muted">${esc([l.z?.join(", "),l.n].filter(Boolean).join(" · ")||"Sin detalles")}</p></div></div>`).join("")}</div></section>`:""}
+
+  ${S.plan?`<section class="soft stack"><div class="eyebrow">Mi plan de cuidado</div><p style="font-weight:700">${S.plan.freq}</p>${S.plan.ex.map(id=>{const e=exById(id);return e?tapCard("exercise",id,pic("ex-"+e.id),e.n,e.tiempo):"";}).join("")}<button class="btn ghost" data-go="day" data-p="30">Editar mi plan</button></section>`:""}
+
+  ${installCard()}
+  <section class="stack noprint"><div id="resetbox"><button class="btn ghost block" data-act="askreset">Borrar mi progreso y mis registros</button></div>
+  ${USER?`<p class="small muted" style="text-align:center">Para eliminar también tu cuenta, escribinos a ${esc(LEGAL.email)}.</p>`:""}</section>
+  ${legalLinks()}`;
+};
+
+V.bonus = ()=>`
+  <div class="stack"><div class="eyebrow">Bonos especiales</div><h1 class="h2">Tus 3 bonos</h1></div>
+  ${tapCard("exercises",null,pic("ex-bolitas"),"Bono 1 · 15 ejercicios para cuidar tus pies","Biblioteca con fotos de movilidad y fortalecimiento")}
+  ${tapCard("shoes",null,pic("calz-ancha"),"Bono 2 · Guía de calzado","Manual visual para elegir zapatos más cómodos")}
+  ${tapCard("calendar",null,`<span style="color:var(--accent-ink)">${I.cal.replace('<svg','<svg width="40" height="40"')}</span>`,"Bono 3 · Calendario de 30 días","Planificador para registrar hábitos y actividades")}`;
+
+V.calendar = ()=>{
+  const canPrint = (()=>{ try{ return window.self===window.top; }catch(e){ return false; } })();
+  return `<div class="stack"><div class="eyebrow">Bono 3</div><h1 class="h2">Calendario de 30 días</h1><p class="muted">Planificador para registrar tus actividades, ejercicios y molestias día a día.</p>
+  ${canPrint?`<button class="btn primary noprint" data-act="print">${I.print} IMPRIMIR CALENDARIO</button>`:`<p class="small muted noprint">Para imprimirlo, abrí la plataforma en tu navegador y usá la opción Imprimir.</p>`}</div>
+  <div class="card tw"><table class="print"><thead><tr><th>Día</th><th>Actividad</th><th>Ejercicios</th><th>Hábitos</th><th>Molestia 0–10</th><th>Notas</th></tr></thead><tbody>
+  ${DAYS.map((d,i)=>`<tr><td><b>${i+1}</b>${S.done[i+1]?" ✓":""}</td><td>${d.t}</td><td>${d.ex.map(id=>exById(id).n).join(", ")||"—"}</td><td>☐ Calzado<br>☐ Revisión<br>☐ Hidratación</td><td></td><td></td></tr>`).join("")}
+  </tbody></table></div>`;
+};
+
+V.safety = ()=>`
+  <div class="stack"><div class="eyebrow">Seguridad y responsabilidad</div><h1 class="h2">Antes de empezar</h1></div>
+  ${disclaimerBox()}
+  ${redFlagsBox()}
+  <section class="card stack"><h2 class="h3">Cómo usar el programa con seguridad</h2>${list(["Hacé los ejercicios despacio, sin rebotes y sin forzar","Detené cualquier ejercicio que provoque dolor","No fuerces articulaciones deformadas ni rígidas","Usá apoyo cuando trabajes de pie para cuidar el equilibrio",RISK_NOTE])}</section>
+  ${legalLinks()}
+  <section class="soft stack"><h2 class="h3">Revisión profesional</h2><p class="small">${REVISOR?`Contenidos revisados por ${REVISOR}.`:"Los contenidos educativos se basan en información general de salud del pie. Las rutinas de ejercicios deben ser revisadas por un profesional de la salud antes de su uso."}</p></section>`;
+
+/* =========================================================
+   RENDER Y EVENTOS
+   ========================================================= */
+const TITLES = {day:p=>`Día ${p}`,exercise:p=>exById(p)?.n,topic:p=>TOPICS.find(t=>t.id===p)?.t,problems:()=>"¿Qué problema tenés?",problem:p=>CONDS.find(c=>c.id===p)?.t,shoes:()=>"Guía de calzado",treatments:()=>"Tratamientos",bonus:()=>"Bonos",calendar:()=>"Calendario de 30 días",safety:()=>"Seguridad",terminos:()=>"Términos de uso",privacidad:()=>"Privacidad"};
+/* Pantallas de acceso */
+let authMode = "login", authMsg = "", authErr = "";
+const AUTH_ERR = [[/invalid login/i,"Email o contraseña incorrectos."],[/already registered|already exists/i,"Ya existe una cuenta con ese email. Iniciá sesión."],[/not confirmed/i,"Confirmá tu email con el enlace que te enviamos."],[/at least 6|password should/i,"La contraseña debe tener al menos 6 caracteres."],[/rate limit|too many/i,"Demasiados intentos. Esperá unos minutos y probá de nuevo."],[/signups not allowed|signup.*disabled/i,"El registro está cerrado. Ingresá con el email de tu compra."]];
+const authError = e => (AUTH_ERR.find(([r])=>r.test(e?.message||""))||[0,"No pudimos completar la operación. Revisá tu conexión e intentá de nuevo."])[1];
+function renderAuth(){
+  document.querySelector(".nav").hidden = true;
+  document.getElementById("modal").innerHTML = "";
+  document.getElementById("top").innerHTML = `<div class="brand">${I.foot.replace('<svg','<svg width="22" height="22"')}Pies sin molestias</div>`;
+  const T = {
+    login:["Ingresá a tu programa","Usá el email y la contraseña de tu cuenta.","INGRESAR"],
+    signup:["Creá tu cuenta","Tu progreso queda guardado y lo ves desde cualquier dispositivo.","CREAR MI CUENTA"],
+    forgot:["Recuperá tu contraseña","Te enviamos un enlace a tu email para crear una nueva.","ENVIAR ENLACE"],
+    newpass:["Elegí una contraseña nueva","Usá al menos 6 caracteres.","GUARDAR CONTRASEÑA"]
+  }[authMode];
+  document.getElementById("main").innerHTML = `<div class="view auth">
+    <section class="hero" style="grid-template-columns:1fr"><h1 style="font-size:clamp(34px,9vw,46px)">Pies <span>sin</span> molestias</h1><p class="sub">Cuidá tus pies, recuperá comodidad en cada paso.</p></section>
+    <section class="card stack"><h2 class="h2">${T[0]}</h2><p class="muted">${T[1]}</p>
+      ${authErr?`<p class="err" role="alert">${esc(authErr)}</p>`:""}${authMsg?`<p class="msg" role="status">${esc(authMsg)}</p>`:""}
+      <form id="authform" novalidate>
+        ${authMode==="signup"?`<label for="a-name">Tu nombre<input type="text" id="a-name" autocomplete="given-name" required></label>`:""}
+        ${authMode!=="newpass"?`<label for="a-email">Email<input type="email" id="a-email" autocomplete="email" inputmode="email" required></label>`:""}
+        ${authMode!=="forgot"?`<label for="a-pass">Contraseña<input type="password" id="a-pass" autocomplete="${authMode==="login"?"current-password":"new-password"}" minlength="6" required></label>`:""}
+        ${authMode==="signup"?`<label class="check" for="a-consent" style="font-weight:400;flex-direction:row"><input type="checkbox" id="a-consent" required><span class="small">Acepto los <button type="button" class="linkbtn" data-act="authlegal" data-p="terminos" style="min-height:0;padding:0">Términos de uso</button> y la <button type="button" class="linkbtn" data-act="authlegal" data-p="privacidad" style="min-height:0;padding:0">Política de privacidad</button>, y doy mi consentimiento para que se guarden los datos de salud que registre.</span></label>`:""}
+        <button class="btn primary block" type="submit" id="a-submit">${T[2]}</button>
+      </form>
+      <div class="stack" style="gap:2px;align-items:center">
+        ${authMode==="login"?`<button class="linkbtn" data-auth="forgot">Olvidé mi contraseña</button>${ALLOW_SIGNUP?`<button class="linkbtn" data-auth="signup">No tengo cuenta: crear una</button>`:""}`:""}
+        ${authMode==="signup"||authMode==="forgot"?`<button class="linkbtn" data-auth="login">Ya tengo cuenta: ingresar</button>`:""}
+      </div>
+      <p class="small muted" style="text-align:center"><button class="linkbtn" data-act="authlegal" data-p="terminos" style="min-height:0;padding:0 4px">Términos de uso</button> · <button class="linkbtn" data-act="authlegal" data-p="privacidad" style="min-height:0;padding:0 4px">Privacidad</button></p>
+    </section></div>`;
+}
+async function submitAuth(){
+  const v = id => document.getElementById(id)?.value.trim() || "";
+  const email = v("a-email"), pass = document.getElementById("a-pass")?.value || "", name = v("a-name");
+  authErr = ""; authMsg = "";
+  if(authMode!=="newpass" && !/^\S+@\S+\.\S+$/.test(email)){ authErr="Escribí un email válido."; return renderAuth(); }
+  if(authMode!=="forgot" && pass.length<6){ authErr="La contraseña debe tener al menos 6 caracteres."; return renderAuth(); }
+  if(authMode==="signup" && !name){ authErr="Escribí tu nombre."; return renderAuth(); }
+  if(authMode==="signup" && !document.getElementById("a-consent")?.checked){ authErr="Para crear tu cuenta tenés que aceptar los términos y la política de privacidad."; return renderAuth(); }
+  const btn = document.getElementById("a-submit"); btn.disabled = true; btn.textContent = "Un momento…";
+  const back = location.origin + location.pathname;
+  try{
+    if(authMode==="login"){ const {data,error}=await sb.auth.signInWithPassword({email,password:pass}); if(error) throw error; return enter(data.user); }
+    if(authMode==="signup"){ const {data,error}=await sb.auth.signUp({email,password:pass,options:{data:{name},emailRedirectTo:back}}); if(error) throw error;
+      if(data.session) return enter(data.user); authMode="login"; authMsg="Te enviamos un email para confirmar tu cuenta. Abrí el enlace y después ingresá."; return renderAuth(); }
+    if(authMode==="forgot"){ const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:back}); if(error) throw error; authMode="login"; authMsg="Si el email tiene una cuenta, te llegó un enlace para crear una contraseña nueva."; return renderAuth(); }
+    if(authMode==="newpass"){ const {data,error}=await sb.auth.updateUser({password:pass}); if(error) throw error; history.replaceState(null,"",location.pathname); toast("Contraseña actualizada"); return enter(data.user); }
+  }catch(e){ authErr = authError(e); renderAuth(); }
+}
+async function enter(user){
+  USER = user;
+  document.getElementById("main").innerHTML = `<div class="view"><p class="muted">Cargando tu programa…</p></div>`;
+  try{ await pullRemote(); syncState="ok"; }catch(e){ S = loadLocal() || blank(); syncState="error"; }
+  start();
+}
+async function logout(){
+  try{ clearTimeout(syncT); if(syncState==="saving") await pushRemote(); await sb.auth.signOut(); }catch(e){}
+  USER = null; S = blank(); stack = []; cur = {v:"home",p:null}; authMode="login"; authMsg="Cerraste sesión."; authErr=""; renderAuth();
+}
+function start(){
+  document.querySelector(".nav").hidden = false;
+  render();
+  if(!S.ack) showAck();
+}
+
+function render(){
+  const m = document.getElementById("main");
+  renderTop(TITLES[cur.v]?.(cur.p));
+  renderNav();
+  m.innerHTML = `<div class="view">${V[cur.v](cur.p)}</div>`;
+  if(cur.v==="progress" && cur.p==="log") setTimeout(()=>document.getElementById("log")?.scrollIntoView({behavior:"smooth"}),50);
+}
+
+const BENEFITS = ["Un programa guiado de 30 días, paso a paso","15 ejercicios ilustrados y fáciles de seguir","Aprendés a elegir calzado más cómodo","Entendés qué les pasa a tus pies, con explicaciones simples","Seguís tu progreso día a día","Terminás con tu propio plan de cuidado"];
+function showAck(){
+  document.getElementById("modal").innerHTML = `<div class="modal" role="dialog" aria-modal="true" aria-labelledby="ackt"><div class="sheet">
+    <div class="eyebrow">Bienvenida</div><h2 class="h2" id="ackt">${userName()?`¡Hola, ${esc(userName())}! `:""}Te damos la bienvenida a Pies sin molestias</h2>
+    <p>Esto es lo que vas a tener:</p>
+    <ul class="dots" style="font-size:18px">${BENEFITS.map(b=>`<li>${b}</li>`).join("")}</ul>
+    <button class="btn primary block" data-act="ack">EMPEZAR</button></div></div>`;
+}
+
+document.addEventListener("click", ev=>{
+  const b = ev.target.closest("button"); if(!b) return;
+  if(b.dataset.auth){ authMode=b.dataset.auth; authErr=""; authMsg=""; renderAuth(); return; }
+  if(b.dataset.act==="authlegal"){ ev.preventDefault(); document.getElementById("main").innerHTML = `<div class="view">${legalView(b.dataset.p).replace(/<button class="btn ghost" data-go[^]*$/,"")}<button class="btn primary" data-act="authback">${I.back} Volver</button></div>`; window.scrollTo({top:0}); return; }
+  if(b.dataset.act==="authback"){ renderAuth(); window.scrollTo({top:0}); return; }
+  if(b.closest("form")) return;
+  if(b.dataset.go){ if(b.dataset.replace){ cur={v:b.dataset.go,p:b.dataset.p}; if(["day","exercise","topic"].includes(cur.v)){S.last={...cur};save();} render(); window.scrollTo({top:0}); return; } go(b.dataset.go, b.dataset.p ?? null); return; }
+  if(b.dataset.filter){ exFilter=b.dataset.filter; render(); return; }
+  if(b.dataset.lv!=null){ logLevel=+b.dataset.lv; document.querySelectorAll("#scale button").forEach(x=>x.setAttribute("aria-pressed", +x.dataset.lv===logLevel)); return; }
+  if(b.dataset.zone){ const z=b.dataset.zone; logZones.has(z)?logZones.delete(z):logZones.add(z); b.setAttribute("aria-pressed",logZones.has(z)); return; }
+  if(b.dataset.freq){ document.querySelectorAll("#freq button").forEach(x=>x.setAttribute("aria-pressed", x===b)); return; }
+  const a = b.dataset.act;
+  if(a==="back") back();
+  else if(a==="ack"){ S.ack=true; save(); document.getElementById("modal").innerHTML=""; }
+  else if(a==="start"){ S.started=today(); save(); go("day",1); }
+  else if(a==="continue"){ doneCount()===30 && S.plan ? go("progress") : go("day", nextDay()); }
+  else if(a==="toggleday"){ const n=b.dataset.p; if(!S.started) S.started=today(); if(S.done[n]) delete S.done[n]; else S.done[n]=today(); save(); render(); toast(S.done[n]?`Día ${n} completado`:`Día ${n} marcado como pendiente`); }
+  else if(a==="exdone"){ const id=b.dataset.p; S.ex[id]=(S.ex[id]||0)+1; S.exLog.push({id,d:today()}); save(); render(); toast("Ejercicio registrado"); }
+  else if(a==="savelog"){
+    if(logLevel===null){ toast("Elegí un número del 0 al 10"); return; }
+    S.logs.push({d:today(),v:logLevel,z:[...logZones],n:document.getElementById("lognote").value.trim()}); save();
+    logLevel=null; logZones=new Set(); render(); toast("Registro guardado");
+  }
+  else if(a==="saveplan"){
+    const ex=[...document.querySelectorAll("[data-plan]:checked")].map(x=>x.dataset.plan);
+    if(!ex.length){ toast("Elegí al menos un ejercicio"); return; }
+    const f=document.querySelector('#freq button[aria-pressed="true"]')?.dataset.freq||"5 veces por semana";
+    S.plan={ex,freq:f,d:today()}; save(); toast("Plan guardado en Mi progreso");
+  }
+  else if(a==="askreset"){ document.getElementById("resetbox").innerHTML=`<div class="alert red">${I.alert}<div class="stack"><b>¿Borrar todo tu progreso?</b><p class="small">Se eliminan días completados, ejercicios, registros de molestia y tu plan${USER?", también de tu cuenta":""}. No se puede deshacer.</p><div class="grid2"><button class="btn ghost" data-act="noreset">Cancelar</button><button class="btn primary" data-act="doreset">Borrar</button></div></div></div>`; }
+  else if(a==="noreset") render();
+  else if(a==="doreset"){ S=Object.assign(blank(),{ack:true}); save(); render(); toast("Progreso reiniciado"); }
+  else if(a==="print"){ try{ window.print(); }catch(e){} }
+  else if(a==="logout") logout();
+  else if(a==="install" && installEvt){ installEvt.prompt(); installEvt.userChoice.finally(()=>{ installEvt=null; render(); }); }
+});
+document.addEventListener("submit", ev=>{ if(ev.target.id==="authform"){ ev.preventDefault(); submitAuth(); } });
+document.addEventListener("change", ev=>{
+  const t = ev.target;
+  if(t.dataset.habit){ const k=t.dataset.habit; S.checks[k]=S.checks[k]||{}; S.checks[k][t.dataset.i]=t.checked; save();
+    const c=HABITS.filter((_,i)=>S.checks[k][i]).length; const el=document.getElementById("habit-sum"); if(el) el.textContent=`${c} de ${HABITS.length} hábitos incorporados`; }
+  if(t.dataset.shoe!=null){ S.shoeCheck[t.dataset.shoe]=t.checked; save(); const c=SHOE_CHECK.filter((_,i)=>S.shoeCheck[i]).length; const el=document.getElementById("shoe-sum"); if(el) el.textContent=`${c} de ${SHOE_CHECK.length} criterios`; }
+});
+
+const h = (location.hash||"").slice(1);
+if(TAB_HASH[h]) cur={v:TAB_HASH[h],p:null};
+(async function boot(){
+  if(!CLOUD){ start(); return; }
+  const recovering = /type=recovery/.test(location.hash);
+  document.querySelector(".nav").hidden = true;
+  document.getElementById("main").innerHTML = `<div class="view"><p class="muted">Cargando…</p></div>`;
+  sb.auth.onAuthStateChange((ev, session)=>{
+    if(ev==="PASSWORD_RECOVERY"){ authMode="newpass"; authErr=""; authMsg=""; setTimeout(renderAuth); }
+    else if(ev==="SIGNED_OUT" && USER){ USER=null; S=blank(); setTimeout(renderAuth); }
+  });
+  try{
+    const { data:{ session } } = await sb.auth.getSession();
+    if(recovering){ authMode="newpass"; renderAuth(); }
+    else if(session) enter(session.user);
+    else renderAuth();
+  }catch(e){ authErr="No pudimos conectar. Revisá tu conexión e intentá de nuevo."; renderAuth(); }
+})();
+</script>
